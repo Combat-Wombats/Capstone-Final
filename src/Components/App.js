@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import Home from './Home';
 import Login from './Login';
+import Register from './Register';
+import { fetchUser } from '../api';
 import { Link, Routes, Route } from 'react-router-dom';
 
 
 const App = ()=> {
   const [auth, setAuth] = useState({});
+  const [user, setUser] = useState({});
+  const [token, setToken] = useState(null)
   const attemptLogin = ()=> {
     const token = window.localStorage.getItem('token');
     if(token){
@@ -27,6 +31,17 @@ const App = ()=> {
     attemptLogin();
   }, []);
 
+  useEffect(() => {
+    const exchangeTokenForUser = async () => {
+      let windowToken = window.localStorage.getItem('token');
+      if (windowToken) {
+        setToken(windowToken)
+        let user = await fetchUser(token);
+        setUser(user);
+      }
+    };
+    exchangeTokenForUser();
+  }, [token])
   const logout = ()=> {
     window.localStorage.removeItem('token');
     setAuth({});
@@ -57,7 +72,7 @@ const App = ()=> {
 
   return (
     <div>
-      <h1>FS UNI App Template</h1>
+      <h1>Combat Wombat</h1>
       <nav>
         {
           auth.id ? (
@@ -68,6 +83,7 @@ const App = ()=> {
           ) : (
             <>
               <Link to='/login'>Login</Link>
+              <Link to='/register'>Register</Link>
             </>
           )
         }
@@ -81,7 +97,8 @@ const App = ()=> {
 
           ): (
             <>
-            <Route path='/login' element= { <Login login={ login }/> } />
+            <Route path='/login' element= { <Login login={ login } token = {token}/> } />
+            <Route path = '/register' element = {<Register setUser={setUser} setToken={setToken} />} />
             </>
           )
         }
