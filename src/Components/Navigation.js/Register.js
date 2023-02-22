@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchRegister } from '../api';
+import { fetchRegister } from '../../api';
 export const Register = (props) => {
     const {setUser, setToken} = props;
     const [username, setUsername] = useState('');
