@@ -4,6 +4,7 @@ import Login from './Navigation.js/Login';
 import Register from './Navigation.js/Register';
 import { fetchUser } from '../api';
 import { Link, Routes, Route } from 'react-router-dom';
+import AllProducts from './AllProducts';
 
 
 const App = ()=> {
@@ -84,6 +85,7 @@ const App = ()=> {
             <>
               <Link to='/login'>Login</Link>
               <Link to='/register'>Register</Link>
+              <Link to='/allProducts'> All Products</Link>
             </>
           )
         }
@@ -99,6 +101,7 @@ const App = ()=> {
             <>
             <Route path='/login' element= { <Login login={ login } token = {token}/> } />
             <Route path = '/register' element = {<Register setUser={setUser} setToken={setToken} />} />
+            <Route path='allProducts' element = {<AllProducts  />} />
         
             </>
           )
