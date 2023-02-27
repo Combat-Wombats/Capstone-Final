@@ -5,28 +5,42 @@ const {
   authenticate
 } = require('./User');
 
+const {
+  createTables,
+  dropTables
+} = require("./seedData")
+
 const syncTables = async()=> {
+  console.log("syncing tables")
   const SQL = `
-  DROP TABLE IF EXISTS users;
+
   CREATE TABLE users(
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(100) UNIQUE NOT NULL,
-    password VARCHAR(100) NOT NULL
+    "userId" SERIAL PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255)
   );
   `;
   await client.query(SQL);
 };
 
 const syncAndSeed = async()=> {
+  await dropTables();
   await syncTables();
+  await createTables();
+  
+
+
   const [moe, lucy]  = await Promise.all([
     createUser({
       username: 'moe',
-      password: 'moe_password'
+      password: 'moe_password',
+      email: 'moe@moe.com'
     }),
     createUser({
       username: 'lucy',
-      password: 'lucy_password'
+      password: 'lucy_password',
+      email: 'lucy@lucy.com'
     })
   ]);
   console.log('--- seeded users ---');
@@ -40,5 +54,7 @@ module.exports = {
   createUser,
   authenticate,
   getUserByToken,
-  client
+  client,
+  createTables,
+  dropTables
 };
