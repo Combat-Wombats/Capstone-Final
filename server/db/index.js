@@ -5,28 +5,72 @@ const {
   authenticate
 } = require('./User');
 
+const {
+  createTables,
+  dropTables
+} = require("./seedData")
+
 const syncTables = async()=> {
+  console.log("syncing tables")
   const SQL = `
-  DROP TABLE IF EXISTS users;
+    DROP TABLE IF EXISTS categories;
+    DROP TABLE IF EXISTS order_products;
+    DROP TABLE IF EXISTS orders;
+    DROP TABLE IF EXISTS users;
+    DROP TABLE IF EXISTS products;
+
   CREATE TABLE users(
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(100) UNIQUE NOT NULL,
-    password VARCHAR(100) NOT NULL
+    "userId" SERIAL PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255)
   );
+      CREATE TABLE products (
+    "productId" SERIAL PRIMARY KEY,
+    price INTEGER,
+    description text,
+    used BOOLEAN,
+    location text,
+    willDeliver BOOLEAN,
+    shipping BOOLEAN
+    );
+    CREATE TABLE categories (
+    id INTEGER REFERENCES products("productId"),
+    percussion_Drums INTEGER,
+    woodwinds INTEGER,
+    brass INTEGER,
+    accesories INTEGER,
+    test VARCHAR(100)
+    );
+    CREATE TABLE orders (
+    "orderId" SERIAL PRIMARY KEY,
+    "userId" INTEGER REFERENCES users("userId")
+    );
+    CREATE TABLE order_products(
+    "productId" INTEGER REFERENCES products("productId"),
+    "orderId" INTEGER REFERENCES orders("orderId")
+    )
+    
   `;
   await client.query(SQL);
 };
 
 const syncAndSeed = async()=> {
   await syncTables();
+
+  
+
+
   const [moe, lucy]  = await Promise.all([
     createUser({
       username: 'moe',
-      password: 'moe_password'
+      password: 'moe_password',
+      email: 'moe@moe.com'
     }),
     createUser({
       username: 'lucy',
-      password: 'lucy_password'
+      password: 'lucy_password',
+      email: 'lucy@lucy.com'
     })
   ]);
   console.log('--- seeded users ---');
@@ -40,5 +84,7 @@ module.exports = {
   createUser,
   authenticate,
   getUserByToken,
-  client
+  client,
+  createTables,
+  dropTables
 };
