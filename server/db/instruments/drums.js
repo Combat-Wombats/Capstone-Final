@@ -9,6 +9,7 @@ const drums=()=>{
       willDeliver: "yes",      
       used: "No",
       shipping: "Yes"
+
     },
     {
       name: 'PDP by DW Concept Maple 4-Piece Shell Pack With Chrome Hardware Twisted Ivory',
@@ -19,6 +20,7 @@ const drums=()=>{
       willDeliver: "Yes",
       used: "No",
       shipping: "Yes"
+
     },
     {
       name: "Sound Percussion Labs Velocity 5-Piece Shell Pack Spring Green",
@@ -29,16 +31,19 @@ const drums=()=>{
       willDeliver: "Yes",
       used: "No",
       shipping: "Yes"
+
     },
   {
     name: "Simmons SD1250 Electronic Drum Kit With Mesh Pads",
     description: "Master your craft with the Simmons SD1250 premium 6-piece e-kit. The SD1250 includes a mesh kick drum, 12 inch snare and four toms. Housed in a distinctive drum shell design, the snare features a rimshot sensor and includes its own stand to get the angle just right. Each of the four toms are dual-zone to easily trigger alternate voices, while each dual-layered drum pad is tension-adjustable to accommodate for player preference.The SD1250 also features a custom sound library containing 750 sounds. These include a wide collection of world percussion and vintage electronic drums for additional creative inspiration. It's a great solution for acoustic drummers looking to transition to an electronic kit, the Simmons SD1250. Plus, the included Simmons Advanced App for iOS makes it even easier to customize your SD1250, recall and edit drum kits, or practice with recorded tracks. The app even includes a sampler to record new sounds, then import directly them into the module without having to use a computer. The Simmons Signature Sound Library is an expansive collection of the world’s most coveted drum kits and snares, recorded with the same world-class audio equipment made famous on classic albums. Simmons’ VAR technology offers many dynamic levels of drum recordings, resulting in true-to-life feel and sound. Samples are recorded multiple times to avoid the “machine gun” effect of simply repeating the same sample. Classic cymbals were recorded in stereo and have a long, natural decay for maximum realism. The SD1250’s 750 sounds include a wide collection of world percussion and vintage electronic drums that rounds out the collection for creative inspiration.",
     features: 'Drum Kit: 12" mesh snare, two 8" and two 10" dual-zone mesh toms. 6" mesh bass drum with non-slip stand. Two 12" dual-zone crash pads. 14" triple-zone ride cymbal. 12" hi-hat with variable pedal. Real snare stand allows complete customization and solid playing surface. Hybrid hex rack with solid, adjustable mounts provide non-slip mounting surface',
     price: "$1099.99",
+
     location: "Huston, TX",
     willDeliver: "Yes",
     used: "No",
     shipping: "Yes"
+
   },
   {
     name: "Nitro Mesh Special-Edition 10-Piece Expanded Electronic Drum Set",
@@ -49,6 +54,7 @@ const drums=()=>{
     willDeliver: "Yes",
     used: "No",
     shipping: "Yes"
+
   }
   ]
 }

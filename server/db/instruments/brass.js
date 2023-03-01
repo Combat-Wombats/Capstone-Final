@@ -5,20 +5,24 @@ const brass =()=>{
       descriptions:"N/A",
       features: "Red brass leadpipe to help with proper note placement. Two-piece yellow brass bell. Stainless steel valves. 1-year limited warranty",
       price: "$269.99",
+
       location: "San Diego",
       willDeliver: "Yes",
       used: "No",
       shipping: "Yes"
+
     },
     {
       name: "Etude ETB-100 Series Student Trombone Lacquer",
       description: "N/A",
       features: "Available model ETB-100 in clear lacquer finish. Designed for easy tone production. Hand-hammered yellow brass bell. Chrome-plated inner handslide tubes. Includes molded case and 12C mouthpiece. 1-year limited warranty",
       price: "$269.99",
+
       location: "New York",
       willDeliver: "Yes",
       used: "No",
       shipping: "Yes"
+
     },
     {
       name: "Allora ATR-250 Student Series Bb Trumpet Silver plated",
@@ -29,6 +33,7 @@ const brass =()=>{
       willDeliver: "Yes",
       used: "No",
       shipping: "Yes"
+
     },
     {
       name: "Miraphone 281 Firebird Series 6-Valve 5/4 F Tuba 281G Gold Brass",
@@ -52,4 +57,5 @@ const brass =()=>{
     }
   ]
 }
+
 
