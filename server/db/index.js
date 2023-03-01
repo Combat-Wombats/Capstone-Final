@@ -10,6 +10,14 @@ const {
   dropTables
 } = require("./seedData")
 
+const {
+  createProducts
+} = require("./products.js")
+
+const {
+  strings
+} = require("./instruments/strings")
+
 const syncTables = async()=> {
   console.log("syncing tables")
   const SQL = `
@@ -27,7 +35,8 @@ const syncTables = async()=> {
   );
       CREATE TABLE products (
     "productId" SERIAL PRIMARY KEY,
-    price INTEGER,
+    name text,
+    price VARCHAR(255),
     description text,
     used BOOLEAN,
     location text,
@@ -55,11 +64,19 @@ const syncTables = async()=> {
   await client.query(SQL);
 };
 
+const getStrings = (strings)=> {
+  return strings
+}
+
+
+  
+
+const stringTables = async() =>  {
+  
+}
+
 const syncAndSeed = async()=> {
   await syncTables();
-
-  //const [guitar, piano] 
-
 
   const [moe, lucy]  = await Promise.all([
     createUser({
@@ -76,7 +93,26 @@ const syncAndSeed = async()=> {
   console.log('--- seeded users ---');
   console.log(moe);
   console.log(lucy);
+  console.log(lol(strings))
 };
+
+const syncProductsTable= async()=>{
+  // await syncTables();
+  // const pr0ducts = await Promise.all([
+  // createProducts({
+  //   productId: 0, 
+  //   name: "generic guitar",
+  //   price: 10, 
+  //   description: "nice stuff", 
+  //   used: true, 
+  //   location: "texas", 
+  //   willDeliver: true, 
+  //   shipping: true
+  // })
+  // ])
+  // console.log("products", pr0ducts)
+}
+
 
 
 module.exports = {
@@ -86,5 +122,6 @@ module.exports = {
   getUserByToken,
   client,
   createTables,
-  dropTables
+  dropTables,
+  syncProductsTable
 };
