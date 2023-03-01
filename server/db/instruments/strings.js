@@ -1,3 +1,4 @@
+
 const strings =  
     [
         {
@@ -154,3 +155,4 @@ const strings =
 
 
 module.exports = {strings}
+
