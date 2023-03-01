@@ -1,4 +1,5 @@
 const client = require('./client');
+
 //const jwt = require('jsonwebtoken');
 //const JWT = process.env.JWT;
 
@@ -16,7 +17,7 @@ const createProducts = async ({name, description, features, price, location, wil
   
   }
   
-}
+
 
 module.exports = {
   createProducts

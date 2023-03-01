@@ -1,5 +1,6 @@
 const app = require('./app');
-const { syncAndSeed, client, stringTable } = require('./db');
+
+const { syncAndSeed, syncProductsTable, client } = require('./db');
 
 
 
@@ -7,8 +8,9 @@ const init = async()=> {
   try {
     await client.connect();
     await syncAndSeed();
-    await stringTable();
-    
+
+    await syncProductsTable();
+
 
     const port = process.env.PORT || 5432;
     const server = app.listen(port, ()=> console.log(`listening on port ${port}`));

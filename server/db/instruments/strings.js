@@ -1,5 +1,5 @@
 
-const strings=
+const strings =  
     [
         {
             
@@ -153,6 +153,6 @@ const strings=
 
     ]
 
-module.exports = {
-    strings
-}
+
+module.exports = {strings}
+
