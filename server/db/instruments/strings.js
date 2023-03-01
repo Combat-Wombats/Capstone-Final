@@ -1,4 +1,5 @@
-const strings= () => {
+
+const strings=
     [
         {
             
@@ -151,6 +152,7 @@ const strings= () => {
         }
 
     ]
-}
 
-export default strings;
+module.exports = {
+    strings
+}

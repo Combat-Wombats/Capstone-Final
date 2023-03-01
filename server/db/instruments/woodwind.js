@@ -1,3 +1,5 @@
+import React from 'react'
+
 const woodwind = () => {
     [
         {
@@ -83,3 +85,5 @@ const woodwind = () => {
 
     ]
 }
+
+export default woodwind
