@@ -58,7 +58,7 @@ const syncTables = async()=> {
 const syncAndSeed = async()=> {
   await syncTables();
 
-  
+  //const [guitar, piano] 
 
 
   const [moe, lucy]  = await Promise.all([
