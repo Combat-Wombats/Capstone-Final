@@ -101,8 +101,8 @@ const App = ()=> {
             <>
             <Route path='/login' element= { <Login login={ login } token = {token}/> } />
             <Route path = '/register' element = {<Register setUser={setUser} setToken={setToken} />} />
-            <Route path='allProducts' element = {<AllProducts  />} />
-        
+            {/* <Route path='allProducts' element = {<AllProducts  />} />
+         */}
             </>
           )
         }

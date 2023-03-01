@@ -27,11 +27,13 @@ const syncTables = async()=> {
   );
       CREATE TABLE products (
     "productId" SERIAL PRIMARY KEY,
-    price INTEGER,
+    name text,
     description text,
-    used BOOLEAN,
+    features text,
+    price INTEGER,
     location text,
     willDeliver BOOLEAN,
+    used BOOLEAN,
     shipping BOOLEAN
     );
     CREATE TABLE categories (
