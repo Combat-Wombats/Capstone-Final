@@ -29,14 +29,16 @@ const {
 
 const {woodwind} = require ("./instruments/woodwind")
 
+const {createCategory} = require('./categories');
+
 const syncTables = async()=> {
   console.log("syncing tables")
   const SQL = `
-    DROP TABLE IF EXISTS categories;
-    DROP TABLE IF EXISTS order_products;
-    DROP TABLE IF EXISTS orders;
-    DROP TABLE IF EXISTS users;
-    DROP TABLE IF EXISTS products;
+  DROP TABLE IF EXISTS order_products;
+  DROP TABLE IF EXISTS orders;
+  DROP TABLE IF EXISTS users;
+  DROP TABLE IF EXISTS products;
+  DROP TABLE IF EXISTS categories;
 
   CREATE TABLE users(
     "userId" SERIAL PRIMARY KEY,
@@ -44,6 +46,10 @@ const syncTables = async()=> {
     password VARCHAR(255) NOT NULL,
     email VARCHAR(255)
   );
+  CREATE TABLE categories (
+    id SERIAL PRIMARY KEY,
+    category VARCHAR (255) NOT NULL
+    );
       CREATE TABLE products (
     "productId" SERIAL PRIMARY KEY,
     name text,
@@ -51,17 +57,10 @@ const syncTables = async()=> {
     features text,
     price VARCHAR(20),
     location text,
-    willDeliver BOOLEAN,
+    "willDeliver" BOOLEAN,
     used BOOLEAN,
-    shipping BOOLEAN
-    );
-    CREATE TABLE categories (
-    id INTEGER REFERENCES products("productId"),
-    percussion_Drums INTEGER,
-    woodwinds INTEGER,
-    brass INTEGER,
-    accesories INTEGER,
-    test VARCHAR(100)
+    shipping BOOLEAN,
+    "categoryId" integer references categories(id)
     );
     CREATE TABLE orders (
     "orderId" SERIAL PRIMARY KEY,
@@ -79,6 +78,7 @@ const syncTables = async()=> {
 const getStrings= async (strings) => {
   let mergedStrings = " "
   for(let i =0; i < strings.length; i++){
+    strings[i].categoryId = 1;
      mergedStrings = await createProducts(strings[i])
      //console.log('this is strigns', mergedStrings)
     }
@@ -88,6 +88,7 @@ const getStrings= async (strings) => {
   //console.log('this is accessories', accessories)
   let mergedAccessories = " "
     for (let i = 0; i < accessories.length; i++){
+      accessories[i].categoryId = 2;
         mergedAccessories = await createProducts(accessories[i])
         //console.log('this is accessories', mergedAccessories)
     }
@@ -119,6 +120,8 @@ const getStrings= async (strings) => {
 
 const syncAndSeed = async()=> {
   await syncTables();
+  await createCategory({category: "strings"});
+  await createCategory({category: "accessories"});
   await getStrings(strings);
   await getAccessories(accessories);
   await getBrass(brass);
@@ -137,10 +140,10 @@ const syncAndSeed = async()=> {
       email: 'lucy@lucy.com'
     })
   ]);
-  console.log('--- seeded users ---');
-  console.log(moe);
-  console.log(lucy);
-  console.log((strings))
+  // console.log('--- seeded users ---');
+  // console.log(moe);
+  // console.log(lucy);
+  // console.log((strings))
 };
 
 
