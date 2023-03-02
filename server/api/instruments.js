@@ -1,12 +1,17 @@
-const express = require ('express').Router();
+const express = require ('express');
 const db = require ('../db');
 const router = require('./auth');
+const router = express.Router();
 
-// GET /api/brass
-router.get('../instruments/brass', async(req, res, next)=>{
+// GET /api/instruments/strings
+router.get('../instruments/strings', async(req, res, next)=>{
    try {
-    const brass = await brass();
+    const brass = await getstrings();
    } catch (error) {
     
    }
 })
+
+// POST /api/instruments/strings
+
+// PATCH /api/instruments/strings
