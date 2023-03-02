@@ -97,6 +97,7 @@ const getStrings= async (strings) => {
  const getBrass = async (brass) => {
   let mergedBrass = " "
     for (let i = 0; i < brass.length; i++) {
+      brass[i].categoryId = 3
       mergedBrass = await createProducts(brass[i])
       //console.log('this is brass', mergedBrass)
     }
@@ -122,6 +123,7 @@ const syncAndSeed = async()=> {
   await syncTables();
   await createCategory({category: "strings"});
   await createCategory({category: "accessories"});
+  await createCategory({category: "brass"})
   await getStrings(strings);
   await getAccessories(accessories);
   await getBrass(brass);
