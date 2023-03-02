@@ -1,4 +1,7 @@
 const client = require('./client');
+// import woodwind from './instruments/woodwind';
+ const {strings} = require ('./instruments/strings')
+const {createProducts} = require('./products')
 const {
   getUserByToken,
   createUser,
@@ -36,11 +39,12 @@ const syncTables = async()=> {
       CREATE TABLE products (
     "productId" SERIAL PRIMARY KEY,
     name text,
-    price VARCHAR(255),
     description text,
-    used BOOLEAN,
+    features text,
+    price VARCHAR(20),
     location text,
     willDeliver BOOLEAN,
+    used BOOLEAN,
     shipping BOOLEAN
     );
     CREATE TABLE categories (
@@ -96,23 +100,17 @@ const syncAndSeed = async()=> {
   console.log((strings))
 };
 
-const syncProductsTable= async()=>{
-  // await syncTables();
-  // const pr0ducts = await Promise.all([
-  // createProducts({
-  //   productId: 0, 
-  //   name: "generic guitar",
-  //   price: 10, 
-  //   description: "nice stuff", 
-  //   used: true, 
-  //   location: "texas", 
-  //   willDeliver: true, 
-  //   shipping: true
-  // })
-  // ])
-  // console.log("products", pr0ducts)
-}
 
+
+
+
+// const syncProductsTable= async()=>{
+//   await syncTables();
+//   const pr0ducts = await Promise.all([
+//   createProducts({
+//     strings({name, description, features, price, location, willDeliver, used, shipping})
+//   })
+//   ])} 
 
 
 module.exports = {
@@ -123,5 +121,4 @@ module.exports = {
   client,
   createTables,
   dropTables,
-  syncProductsTable
 };
