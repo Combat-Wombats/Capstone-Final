@@ -93,7 +93,7 @@ const syncAndSeed = async()=> {
   console.log('--- seeded users ---');
   console.log(moe);
   console.log(lucy);
-  console.log(lol(strings))
+  console.log((strings))
 };
 
 const syncProductsTable= async()=>{
