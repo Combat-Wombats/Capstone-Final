@@ -113,7 +113,7 @@ const getStrings= async (strings) => {
   let mergedWoodWind = " ";
   for (let i = 0; i < woodwind.length; i++){
     mergedWoodWind= await createProducts(woodwind[i])
-    console.log('this is woodwind', mergedWoodWind)
+    //console.log('this is woodwind', mergedWoodWind)
   }
  }
 
