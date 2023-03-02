@@ -16,6 +16,7 @@ const createProducts = async ({name, description, features, price, location, wil
     console.log(error)
   
   }
+}
   
 
 

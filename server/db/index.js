@@ -1,7 +1,5 @@
 const client = require('./client');
 // import woodwind from './instruments/woodwind';
- const {strings} = require ('./instruments/strings')
-const {createProducts} = require('./products')
 const {
   getUserByToken,
   createUser,
@@ -68,20 +66,17 @@ const syncTables = async()=> {
   await client.query(SQL);
 };
 
-const getStrings = (strings)=> {
-  return strings
-}
-
-
-  
-
-const stringTables = async() =>  {
-  
-}
+const getStrings= async (strings) => {
+  let mergedStrings = " "
+  for(let i =0; i < strings.length; i++){
+     mergedStrings = await createProducts(strings[i])
+     console.log('this is strigns', mergedStrings)
+ }
+ }
 
 const syncAndSeed = async()=> {
   await syncTables();
-
+  await getStrings(strings);
   const [moe, lucy]  = await Promise.all([
     createUser({
       username: 'moe',
@@ -104,13 +99,6 @@ const syncAndSeed = async()=> {
 
 
 
-// const syncProductsTable= async()=>{
-//   await syncTables();
-//   const pr0ducts = await Promise.all([
-//   createProducts({
-//     strings({name, description, features, price, location, willDeliver, used, shipping})
-//   })
-//   ])} 
 
 
 module.exports = {
