@@ -97,6 +97,9 @@ const syncAndSeed = async()=> {
   console.log('--- seeded users ---');
   console.log(moe);
   console.log(lucy);
+  console.log((strings))
+};
+
 
 
 
