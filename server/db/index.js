@@ -18,6 +18,16 @@ const {
 const {
   strings
 } = require("./instruments/strings")
+const {
+  accessories
+} = require("./instruments/accessories");
+const {
+  brass
+} = require ("./instruments/brass");
+const { 
+  drums } = require ("./instruments/drums");
+
+const {woodwind} = require ("./instruments/woodwind")
 
 const syncTables = async()=> {
   console.log("syncing tables")
@@ -70,13 +80,51 @@ const getStrings= async (strings) => {
   let mergedStrings = " "
   for(let i =0; i < strings.length; i++){
      mergedStrings = await createProducts(strings[i])
-     console.log('this is strigns', mergedStrings)
+     //console.log('this is strigns', mergedStrings)
+    }
  }
+
+ const getAccessories = async (accessories) => {
+  //console.log('this is accessories', accessories)
+  let mergedAccessories = " "
+    for (let i = 0; i < accessories.length; i++){
+        mergedAccessories = await createProducts(accessories[i])
+        //console.log('this is accessories', mergedAccessories)
+    }
+ }
+
+ const getBrass = async (brass) => {
+  let mergedBrass = " "
+    for (let i = 0; i < brass.length; i++) {
+      mergedBrass = await createProducts(brass[i])
+      //console.log('this is brass', mergedBrass)
+    }
+ };
+
+ const getDrums = async (drums ) => {
+    let mergedDrums = " ";
+    for (let i = 0; i < drums.length; i++) {
+      mergedDrums = await createProducts(drums[i])
+     // console.log('this is drums', mergedDrums)
+    }
+ }
+
+ const getWoodwind = async (woodwind) => {
+  let mergedWoodWind = " ";
+  for (let i = 0; i < woodwind.length; i++){
+    mergedWoodWind= await createProducts(woodwind[i])
+    console.log('this is woodwind', mergedWoodWind)
+  }
  }
 
 const syncAndSeed = async()=> {
   await syncTables();
   await getStrings(strings);
+  await getAccessories(accessories);
+  await getBrass(brass);
+  await getDrums(drums);
+  await getWoodwind(woodwind)
+
   const [moe, lucy]  = await Promise.all([
     createUser({
       username: 'moe',

@@ -1,6 +1,4 @@
-import React from 'react'
-
-const woodwind = () => {
+const woodwind = 
     [
         {
             name: "Yamaha  YTS-62III Professional Tenor Saxophone",
@@ -84,6 +82,6 @@ const woodwind = () => {
         }
 
     ]
-}
 
-export default woodwind
+
+module.exports = { woodwind}
