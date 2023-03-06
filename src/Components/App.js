@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Home from './Home';
 import Login from './Navigation.js/Login';
 import Register from './Navigation.js/Register';
-import { fetchUser } from '../api';
+import { fetchUser, fetchAllProducts } from '../api';
 import { Link, Routes, Route } from 'react-router-dom';
 import AllProducts from './AllProducts';
 
@@ -11,6 +11,16 @@ const App = ()=> {
   const [auth, setAuth] = useState({});
   const [user, setUser] = useState({});
   const [token, setToken] = useState(null)
+  const [products, setProducts] = useState([]);
+
+useEffect(()=> {
+    const fetchData = async () => {
+      const fetchProducts = await fetchAllProducts();
+      setProducts(fetchProducts);
+    }
+    fetchData();
+  }, [])
+
   const attemptLogin = ()=> {
     const token = window.localStorage.getItem('token');
     if(token){
@@ -102,7 +112,7 @@ const App = ()=> {
             <Route path='/login' element= { <Login login={ login } token = {token}/> } />
             <Route path = '/register' element = {<Register setUser={setUser} setToken={setToken} />} />
 
-            <Route path='allProducts' element = {<AllProducts  />} />
+            <Route path='allProducts' element = {<AllProducts  products={products} setProducts={setProducts}/>} />
         
 
             </>

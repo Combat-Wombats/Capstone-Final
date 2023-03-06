@@ -51,8 +51,19 @@ const fetchUser = async (token) => {
         console.error(error)
     }
 }
+
+const fetchAllProducts = async ()=>{
+    try {
+        const response = await fetch(`http://localhost:3000/api/instruments`)
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        console.error(error);
+    }
+}
 module.exports = {
     fetchRegister,
     fetchLogin,
-    fetchUser
+    fetchUser,
+    fetchAllProducts
 }
