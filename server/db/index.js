@@ -106,6 +106,7 @@ const getStrings= async (strings) => {
  const getDrums = async (drums ) => {
     let mergedDrums = " ";
     for (let i = 0; i < drums.length; i++) {
+      drums[i].categoryId = 4
       mergedDrums = await createProducts(drums[i])
      // console.log('this is drums', mergedDrums)
     }
@@ -114,6 +115,7 @@ const getStrings= async (strings) => {
  const getWoodwind = async (woodwind) => {
   let mergedWoodWind = " ";
   for (let i = 0; i < woodwind.length; i++){
+    woodwind[i].categoryId = 5
     mergedWoodWind= await createProducts(woodwind[i])
     //console.log('this is woodwind', mergedWoodWind)
   }
@@ -123,7 +125,9 @@ const syncAndSeed = async()=> {
   await syncTables();
   await createCategory({category: "strings"});
   await createCategory({category: "accessories"});
-  await createCategory({category: "brass"})
+  await createCategory({category: "brass"});
+  await createCategory({category: "drums"});
+  await createCategory({category: "woodwind"});
   await getStrings(strings);
   await getAccessories(accessories);
   await getBrass(brass);
