@@ -1,6 +1,6 @@
 const express = require('express');
 const userRouter = express.Router();
-const {createUser, getUserByUsername} = require('../db/User');
+const {createUser, getUserByUsername, authenticate} = require('../db/User');
 const jwt = require('jsonwebtoken');
 //current route is /api/users
 
@@ -34,5 +34,6 @@ userRouter.post('/register', async(req, res, next) => {
     }
 
 })
+
 
 module.exports = userRouter;

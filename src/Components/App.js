@@ -7,6 +7,7 @@ import { Link, Routes, Route } from 'react-router-dom';
 import AllProducts from './AllProducts';
 
 
+
 const App = ()=> {
   const [auth, setAuth] = useState({});
   const [user, setUser] = useState({});
@@ -60,7 +61,7 @@ useEffect(()=> {
 
   const login = async({ username, password})=> {
     fetch(
-      '/api/auth',
+      '/api/auth/',
       {
         method: 'POST',
         body: JSON.stringify({ username, password}),

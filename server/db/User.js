@@ -14,6 +14,7 @@ const createUser = async({ username, password, email }) => {
 
 const getUserByToken = async(token) => {
   const payload = await jwt.verify(token, JWT);
+  console.log('payload', payload)
   const SQL = `
     SELECT users.*
     FROM users

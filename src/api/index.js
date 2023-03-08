@@ -17,25 +17,25 @@ const fetchRegister = async (username, password) => {
     }
 }
 
-const fetchLogin = async (username, password) => {
-    try {
-        const response = await fetch(`/api/users/login`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                username: username,
-                password: password
-            }),
-        });
-        const result = await response.json();
-        //console.log("login result",result);
-        return result;
-    } catch (error) {
-        console.error(error)
-    }
-}
+// const fetchLogin = async (username, password) => {
+//     try {
+//         const response = await fetch(`/api/users/login`, {
+//             method: "POST",
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify({
+//                 username: username,
+//                 password: password
+//             }),
+//         });
+//         const result = await response.json();
+//         //console.log("login result",result);
+//         return result;
+//     } catch (error) {
+//         console.error(error)
+//     }
+// }
 
 const fetchUser = async (token) => {
     try {
@@ -63,7 +63,7 @@ const fetchAllProducts = async ()=>{
 }
 module.exports = {
     fetchRegister,
-    fetchLogin,
+    //fetchLogin,
    fetchUser,
     fetchAllProducts
 }
