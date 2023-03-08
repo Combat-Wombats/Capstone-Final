@@ -14,20 +14,20 @@ const createUser = async({ username, password, email }) => {
 
 const getUserByToken = async(token) => {
   const payload = await jwt.verify(token, JWT);
-  // console.log('payload', payload, token)
-  // const SQL = `
-  //   SELECT users.*
-  //   FROM users
-  //   WHERE "userId" = $1 
-  // `;
-  // const response = await client.query(SQL, [ payload.id]);
-  // if(!response.rows.length){
-  //   const error = Error('not authorized');
-  //   error.status = 401;
-  //   throw error;
-  // }
-  // const user = response.rows[0];
- // delete user.password;
+  console.log('payload', payload, token)
+  const SQL = `
+    SELECT users.*
+    FROM users
+    WHERE "userId" = $1 
+  `;
+  const response = await client.query(SQL, [ payload.id]);
+  if(!response.rows.length){
+    const error = Error('not authorized');
+    error.status = 401;
+    throw error;
+  }
+  const user = response.rows[0];
+ delete user.password;
   return payload; 
 }
 
@@ -43,7 +43,8 @@ const authenticate = async({ username, password }) => {
     error.status = 401;
     throw error;
   }
-  return jwt.sign({ id: response.rows[0].id }, JWT);
+  console.log('this',response.rows)
+  return jwt.sign({ id: response.rows[0].userId }, JWT);
 }
 
 const getUserByUsername = async(username) => {
