@@ -1,6 +1,15 @@
 const app = require('./app');
 
 const { syncAndSeed, client } = require('./db');
+// const express = require('express')
+// const server = express();
+
+// const apiRouter = require('./api');
+// server.use('api', apiRouter);
+
+// const morgan = require('morgan');
+// server.use(morgan('dev'))
+
 
 
 

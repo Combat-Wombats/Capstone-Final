@@ -46,9 +46,25 @@ const authenticate = async({ username, password }) => {
   return jwt.sign({ id: response.rows[0].id }, JWT);
 }
 
+const getUserByUsername = async(username) => {
+  try {
+    const {rows: [user]} = await client.query(
+      `
+      SELECT * FROM users
+      WHERE username = $1
+      `, [username]
+    )
+    return user
+  } catch (error) {
+    console.log(error)
+    
+  }
+}
+
 module.exports = {
   createUser,
   authenticate,
   getUserByToken,
+  getUserByUsername
 };
 

@@ -2,7 +2,7 @@ const url = 'http://fitnesstrac-kr.herokuapp.com/api'
 
 const fetchRegister = async (username, password) => {
     try {
-        const response = await fetch(`${url}/users/register`, {
+        const response = await fetch(`/api/users/register`, {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -19,7 +19,7 @@ const fetchRegister = async (username, password) => {
 
 const fetchLogin = async (username, password) => {
     try {
-        const response = await fetch(`${url}/users/login`, {
+        const response = await fetch(`/api/users/login`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -64,6 +64,6 @@ const fetchAllProducts = async ()=>{
 module.exports = {
     fetchRegister,
     fetchLogin,
-    fetchUser,
+   fetchUser,
     fetchAllProducts
 }

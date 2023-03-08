@@ -11,10 +11,11 @@ const AllProducts = (props) => {
                     return <div key={product.id}>
                         <h3> Name: {product.name} </h3>
                         <p> Description: {product.description}</p>
+                        <p> Features: {product.features} </p>
                         <p> Price: {product.price} </p>
                         <p> Location: {product.location} </p>
-                        <p> Is the product used? {product.used} </p>
-                        <p> Delivery? {product.delivery} </p>
+                        <p> Will Deliver: {product.willDeliver} </p>
+                        <p> Used? {product.used} </p>
                         <p> Shipping ? {product.shipping} </p>
                         </div> 
                 })

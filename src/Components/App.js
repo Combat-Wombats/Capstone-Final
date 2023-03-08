@@ -25,7 +25,7 @@ useEffect(()=> {
     const token = window.localStorage.getItem('token');
     if(token){
       fetch(
-        '/api/auth/',
+        '/api/auth',
         {
           method: 'GET',
           headers: {
@@ -60,7 +60,7 @@ useEffect(()=> {
 
   const login = async({ username, password})=> {
     fetch(
-      '/api/auth/',
+      '/api/auth',
       {
         method: 'POST',
         body: JSON.stringify({ username, password}),
@@ -110,7 +110,7 @@ useEffect(()=> {
           ): (
             <>
             <Route path='/login' element= { <Login login={ login } token = {token}/> } />
-            <Route path = '/register' element = {<Register setUser={setUser} setToken={setToken} />} />
+            <Route path = '/register' element = {<Register setUser={setUser} setToken={setToken} token= {token}/>} />
 
             <Route path='allProducts' element = {<AllProducts  products={products} setProducts={setProducts}/>} />
         
