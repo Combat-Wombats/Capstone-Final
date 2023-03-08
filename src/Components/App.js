@@ -3,10 +3,27 @@ import Home from './Home';
 import Login from './Navigation.js/Login';
 import Register from './Navigation.js/Register';
 import { fetchUser, fetchAllProducts } from '../api';
-import { Link, Routes, Route } from 'react-router-dom';
+import { Link, Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import AllProducts from './AllProducts';
 
-
+const Search = ({ products })=>{
+  const { term } = useParams();
+  return (
+    <ul>
+      {
+        products.filter(product => {
+          return !term || product.name.includes(term)
+        }).map( product => {
+          return (
+            <li key={ product.id }>
+              { product.name }
+            </li>
+          );
+        })
+      }
+    </ul>
+  );
+};
 
 const App = ()=> {
   const [auth, setAuth] = useState({});
@@ -82,6 +99,7 @@ useEffect(()=> {
     });
   };
 
+const navigate = useNavigate();
   return (
     <div>
       <h1>Combat Wombat</h1>
@@ -101,6 +119,15 @@ useEffect(()=> {
           )
         }
       </nav>
+        <input 
+          placeholder='search for products' 
+          className='search'
+          onChange = {
+            (ev)=> {
+              navigate(`/allProducts/search/${ev.target.value}`);
+              //console.log(ev.target.value);
+            }
+          }/>
       <Routes>
         {
           auth.id ? (
@@ -111,11 +138,10 @@ useEffect(()=> {
           ): (
             <>
             <Route path='/login' element= { <Login login={ login } token = {token}/> } />
-            <Route path = '/register' element = {<Register setUser={setUser} setToken={setToken} token= {token}/>} />
-
-            <Route path='allProducts' element = {<AllProducts  products={products} setProducts={setProducts}/>} />
-        
-
+            <Route path='/register' element = {<Register setUser={setUser} setToken={setToken} token= {token}/>} />
+            <Route path='/allProducts' element = {<AllProducts  products={products} setProducts={setProducts}/>} />
+            <Route path='/allProducts/search/:term' element = {<Search  products={products}/>} />
+            <Route path='/allProducts/search' element = {<Search  products={products}/>} />
             </>
           )
         }
