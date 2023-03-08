@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Home from './Home';
 import Login from './Navigation.js/Login';
 import Register from './Navigation.js/Register';
-import { fetchUser, fetchAllProducts } from '../api';
+import { fetchUser, fetchAllProducts, fetchSingleProduct } from '../api';
 import { Link, Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import AllProducts from './AllProducts';
+import SingleProduct from './SingleProduct';
 
 const Search = ({ products })=>{
   const { term } = useParams();
@@ -30,6 +31,8 @@ const App = ()=> {
   const [user, setUser] = useState({});
   const [token, setToken] = useState(null)
   const [products, setProducts] = useState([]);
+  const [ product, setProduct] =useState([]);
+
 console.log('this is user', auth)
 useEffect(()=> {
     const fetchData = async () => {
@@ -38,6 +41,14 @@ useEffect(()=> {
     }
     fetchData();
   }, [])
+
+  useEffect(()=> {
+        const fetchSingleData = async (productId) => {
+          const fetchSingleProducts = await fetchSingleProduct(productId);
+          setProduct(fetchSingleProducts);
+        }
+        fetchSingleData();
+      }, [])
 
   const attemptLogin = ()=> {
     const token = window.localStorage.getItem('token');
@@ -143,6 +154,7 @@ const navigate = useNavigate();
             <Route path='/allProducts' element = {<AllProducts  products={products} setProducts={setProducts}/>} />
             <Route path='/allProducts/search/:term' element = {<Search  products={products}/>} />
             <Route path='/allProducts/search' element = {<Search  products={products}/>} />
+            <Route path='/singleProduct' element = {<SingleProduct  product={product} setProduct={setProduct}/>} />
             </>
           )
         }

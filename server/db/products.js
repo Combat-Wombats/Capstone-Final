@@ -31,9 +31,22 @@ const getProducts = async()=>{
   }
 }
   
-
+const getSingleProduct = async(productId) => {
+try {
+  const SQL =`
+  SELECT * FROM products
+  WHERE "productId" = $1`;
+  const response =await client.query(SQL, [productId])
+  return response.rows
+} catch (error) {
+  console.log(error)
+  
+}
+}
 
 module.exports = {
   createProducts,
-  getProducts
+  getProducts,
+  getSingleProduct
+
 }

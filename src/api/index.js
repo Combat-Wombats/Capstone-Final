@@ -54,16 +54,32 @@ const fetchRegister = async (username, password) => {
 
 const fetchAllProducts = async ()=>{
     try {
-        const response = await fetch(`${url}/api/instruments`);
+        const response = await fetch(`/api/instruments`);
         const result = await response.json();
         return result;
     } catch (error) {
         console.error(error);
     }
 }
+
+const fetchSingleProduct = async (productId) => {
+    try {
+        const response = await fetch(`/api/instruments/${productId}`);
+        const result = await response.json();
+        console.log(result, "fetching single")
+        if (result.error) {
+            throw result.error
+        }
+        return result;
+        
+    } catch (error) {
+        console.error("tehere is an error", error);
+    }
+};
 module.exports = {
     fetchRegister,
     //fetchLogin,
    //fetchUser,
-    fetchAllProducts
+    fetchAllProducts,
+    fetchSingleProduct
 }
