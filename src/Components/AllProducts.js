@@ -15,7 +15,7 @@ const AllProducts = (props) => {
                         <p> Price: {product.price} </p>
                         <p> Location: {product.location} </p>
                         <p> Will Deliver: {product.willDeliver} </p>
-                        <p> Used? {product.used} </p>
+                        <p> Used ? {product.used} </p>
                         <p> Shipping ? {product.shipping} </p>
                         </div> 
                 })

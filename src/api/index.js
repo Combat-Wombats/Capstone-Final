@@ -37,20 +37,20 @@ const fetchRegister = async (username, password) => {
 //     }
 // }
 
-const fetchUser = async (token) => {
-    try {
-        const response = await fetch(`${url}/users/me`, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-        })
-        const result = await response.json();
-        return result;
-    } catch (error) {
-        console.error(error)
-    }
-}
+// const fetchUser = async (token) => {
+//     try {
+//         const response = await fetch('', {
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 'Authorization': `Bearer ${token}`
+//             },
+//         })
+//         const result = await response.json();
+//         return result;
+//     } catch (error) {
+//         console.error(error)
+//     }
+// }
 
 const fetchAllProducts = async ()=>{
     try {
@@ -64,6 +64,6 @@ const fetchAllProducts = async ()=>{
 module.exports = {
     fetchRegister,
     //fetchLogin,
-   fetchUser,
+   //fetchUser,
     fetchAllProducts
 }

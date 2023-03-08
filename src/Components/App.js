@@ -30,7 +30,7 @@ const App = ()=> {
   const [user, setUser] = useState({});
   const [token, setToken] = useState(null)
   const [products, setProducts] = useState([]);
-
+console.log('this is user', auth)
 useEffect(()=> {
     const fetchData = async () => {
       const fetchProducts = await fetchAllProducts();
@@ -53,6 +53,7 @@ useEffect(()=> {
       )
       .then( response => response.json())
       .then( user => setAuth(user));
+      
     }
   };
 
@@ -60,17 +61,17 @@ useEffect(()=> {
     attemptLogin();
   }, []);
 
-  useEffect(() => {
-    const exchangeTokenForUser = async () => {
-      let windowToken = window.localStorage.getItem('token');
-      if (windowToken) {
-        setToken(windowToken)
-        let user = await fetchUser(token);
-        setUser(user);
-      }
-    };
-    exchangeTokenForUser();
-  }, [token])
+  // useEffect(() => {
+  //   const exchangeTokenForUser = async () => {
+  //     let windowToken = window.localStorage.getItem('token');
+  //     if (windowToken) {
+  //       setToken(windowToken)
+  //       let user = await fetchUser(token);
+  //       setUser(user);
+  //     }
+  //   };
+  //   exchangeTokenForUser();
+  // }, [token])
   const logout = ()=> {
     window.localStorage.removeItem('token');
     setAuth({});
