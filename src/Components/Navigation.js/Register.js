@@ -9,11 +9,11 @@ export const Register = (props) => {
     const register = async(ev) => {
         ev.preventDefault();
         const register = await fetchRegister(username, password)
-        const token = window.localStorage.getItem("token");
+        //const token = window.localStorage.getItem("token");
         console.log(register)
         if(register.token){
             setToken(register.token);
-            window.localStorage.setItem('token', token);
+            window.localStorage.setItem('token', register.token);
         }
         if(register.user){
             setUser(register.user);
