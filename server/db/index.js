@@ -33,12 +33,13 @@ const {createCategory} = require('./categories');
 
 const syncTables = async()=> {
   console.log("syncing tables")
+  // DROP TABLE IF EXISTS order_products;
+  // DROP TABLE IF EXISTS orders;
+  // DROP TABLE IF EXISTS users;
+  // DROP TABLE IF EXISTS products;
+  // DROP TABLE IF EXISTS categories;
   const SQL = `
-  DROP TABLE IF EXISTS order_products;
-  DROP TABLE IF EXISTS orders;
-  DROP TABLE IF EXISTS users;
-  DROP TABLE IF EXISTS products;
-  DROP TABLE IF EXISTS categories;
+
 
   CREATE TABLE users(
     "userId" SERIAL PRIMARY KEY,

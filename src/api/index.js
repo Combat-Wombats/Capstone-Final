@@ -1,4 +1,4 @@
-const url = 'http://fitnesstrac-kr.herokuapp.com/api'
+const url = 'http://localhost:3000'
 
 const fetchRegister = async (username, password) => {
     try {
@@ -54,7 +54,7 @@ const fetchUser = async (token) => {
 
 const fetchAllProducts = async ()=>{
     try {
-        const response = await fetch(`http://localhost:3000/api/instruments`)
+        const response = await fetch(`${url}/api/instruments`);
         const result = await response.json();
         return result;
     } catch (error) {
