@@ -29,7 +29,7 @@ const {
 
 const {woodwind} = require ("./instruments/woodwind")
 
-const {createCategory} = require('./categories');
+const {createCategory, getCategories} = require('./categories');
 
 const syncTables = async()=> {
   console.log("syncing tables")
@@ -167,4 +167,5 @@ module.exports = {
   client,
   createTables,
   dropTables,
+  getCategories
 };

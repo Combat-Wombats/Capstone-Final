@@ -14,7 +14,7 @@ app.use('/api/auth', require('./api/auth'));
 
 app.use('/api/instruments', require('./api/instruments'));
 
-
+app.use("/api/categories", require("./api/categories"))
 
 
 //app.use('/api/register',require('./api/users'))
