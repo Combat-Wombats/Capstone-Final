@@ -3,7 +3,7 @@ const db = require ('../db');
 //const router = require('./auth');
 const router = express.Router();
 const { getstrings } = require('../db/index');
-const { getProducts } = require('../db/products');
+const { getProducts, getSingleProduct } = require('../db/products');
 
 // /api/instruments
 router.get('/', async (req, res, next)=> {
@@ -25,6 +25,17 @@ router.get('/strings', async(req, res, next)=>{
    }
 })
 
+router.get(`/singleProduct/:productId`, async(req, res, next) => {
+    try {
+        const {productId} = req.params
+        const singlePr = await getSingleProduct(productId);
+        console.log(singlePr, "this is singlePr")
+        res.send(singlePr);
+        console.log("A request is being made to indv product");
+    } catch (error) {
+        next(error)
+    }
+})
 // POST /api/instruments/strings
 
 // PATCH /api/instruments/strings

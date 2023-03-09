@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 const AllProducts = (props) => {
     const products = props.products;
-
+console.log(products, "this is products")
     return (
         <div> 
             <h2> Our Products</h2>
@@ -17,7 +17,7 @@ const AllProducts = (props) => {
                         <p> Will Deliver: {product.willDeliver} </p>
                         <p> Used ? {product.used} </p>
                         <p> Shipping ? {product.shipping} </p> */}
-                        <Link to='/singleProduct'>More Details</Link>
+                        <Link to='/singleProduct/:productId'>More Details</Link>
                         </div> 
                 })
             }

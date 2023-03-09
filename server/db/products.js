@@ -31,7 +31,7 @@ const getProducts = async()=>{
   }
 }
   
-const getSingleProduct = async(productId) => {
+const getSingleProduct = async({productId}) => {
 try {
   const SQL =`
   SELECT * FROM products
