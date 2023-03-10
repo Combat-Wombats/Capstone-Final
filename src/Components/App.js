@@ -154,7 +154,8 @@ const navigate = useNavigate();
             <Route path='/allProducts' element = {<AllProducts  products={products} setProducts={setProducts}/>} />
             <Route path='/allProducts/search/:term' element = {<Search  products={products}/>} />
             <Route path='/allProducts/search' element = {<Search  products={products}/>} />
-            <Route path='/singleProduct' element = {<SingleProduct  product={product} setProduct={setProduct}/>} />
+            <Route path='/allProducts/:productId' element = {<SingleProduct  product={product} setProduct={setProduct}/>} />
+
             </>
           )
         }

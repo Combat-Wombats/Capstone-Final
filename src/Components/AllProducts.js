@@ -1,28 +1,41 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
-const AllProducts = (props) => {
-    const products = props.products;
+const AllProducts = props => {
+  const products = props.products;
 
-    return (
-        <div> 
-            <h2> Our Products</h2>
-            {
-                products.map((product) => {
-                    return <div key={product.id}>
-                        <h3> Name: {product.name} </h3>
-                        {/* <p> Description: {product.description}</p>
+  return (
+    <div className="all-products-container">
+      <h2 className="title"> Our Products</h2>
+      <div className="products-container">
+        {products.map(product => {
+          return (
+            <div key={product.id} className="single-product">
+              <h3 className="product-name">
+                {' '}Name: {product.name}{' '}
+              </h3>
+              {/* <p> Description: {product.description}</p>
                         <p> Features: {product.features} </p> */}
-                        <p> Price: {product.price} </p>
-                        {/* <p> Location: {product.location} </p>
+              <p className="product-price">
+                {product.price}
+              </p>
+              {/* <p> Location: {product.location} </p>
                         <p> Will Deliver: {product.willDeliver} </p>
                         <p> Used ? {product.used} </p>
                         <p> Shipping ? {product.shipping} </p> */}
-                        <Link to='/singleProduct'>More Details</Link>
-                        </div> 
-                })
-            }
-        </div>
-    )
-}
+              <Link
+                to={`/allProducts/${product.id}`}
+                className="view-details-button"
+              >
+                View details
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 
-export default AllProducts
+export default AllProducts;
+
+// ADAM: changed the URL with the proper product id
