@@ -32,26 +32,31 @@ const {woodwind} = require ("./instruments/woodwind")
 const {createCategory} = require('./categories');
 
 const syncTables = async()=> {
-  console.log("syncing tables")
-  // DROP TABLE IF EXISTS order_products;
-  // DROP TABLE IF EXISTS orders;
-  // DROP TABLE IF EXISTS users;
-  // DROP TABLE IF EXISTS products;
-  // DROP TABLE IF EXISTS categories;
+ 
+ 
+ 
+ 
   const SQL = `
 
-
+  
+  DROP TABLE IF EXISTS order_products;
+  DROP TABLE IF EXISTS orders;
+  DROP TABLE IF EXISTS products;
+  DROP TABLE IF EXISTS categories;
+  DROP TABLE IF EXISTS users;
+ 
+ 
   CREATE TABLE users(
     "userId" SERIAL PRIMARY KEY,
     username VARCHAR(255) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    email VARCHAR(255)
+    password VARCHAR(255) NOT NULL
+    
   );
   CREATE TABLE categories (
     id SERIAL PRIMARY KEY,
     category VARCHAR (255) NOT NULL
     );
-      CREATE TABLE products (
+  CREATE TABLE products (
     "productId" SERIAL PRIMARY KEY,
     name text,
     description text,
@@ -63,14 +68,17 @@ const syncTables = async()=> {
     shipping BOOLEAN,
     "categoryId" integer references categories(id)
     );
-    CREATE TABLE orders (
-    "orderId" SERIAL PRIMARY KEY,
-    "userId" INTEGER REFERENCES users("userId")
-    );
-    CREATE TABLE order_products(
-    "productId" INTEGER REFERENCES products("productId"),
-    "orderId" INTEGER REFERENCES orders("orderId")
-    )
+  CREATE TABLE orders (
+      id SERIAL PRIMARY KEY,
+      user_id INTEGER REFERENCES users("userId") NOT NULL,
+      is_active BOOLEAN
+      );
+ CREATE TABLE order_products(
+        id SERIAL PRIMARY KEY,
+        product_id INTEGER REFERENCES products("productId"),
+        order_id INTEGER REFERENCES orders("orderId")
+      );
+      
     
   `;
   await client.query(SQL);
