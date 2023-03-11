@@ -31,9 +31,8 @@ const App = ()=> {
   const [user, setUser] = useState({});
   const [token, setToken] = useState(null)
   const [products, setProducts] = useState([]);
-  const [ product, setProduct] =useState([]);
+  const [product, setProduct] =useState([]);
 
-console.log('this is user', auth)
 useEffect(()=> {
     const fetchData = async () => {
       const fetchProducts = await fetchAllProducts();
@@ -127,6 +126,7 @@ const navigate = useNavigate();
               <Link to='/login'>Login</Link>
               <Link to='/register'>Register</Link>
               <Link to='/allProducts'> All Products</Link>
+              <Link to='/cart'>Cart</Link>
             </>
           )
         }

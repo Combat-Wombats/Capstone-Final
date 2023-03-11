@@ -14,12 +14,7 @@ app.use('/api/auth', require('./api/auth'));
 
 app.use('/api/instruments', require('./api/instruments'));
 
-
-
-
 //app.use('/api/register',require('./api/users'))
-
-
 
 const apiRouter = require('./api');
 app.use('/api', apiRouter);

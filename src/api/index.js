@@ -66,13 +66,13 @@ const fetchSingleProduct = async productId => {
   try {
     const response = await fetch(`/api/instruments/strings/${productId}`);
     const result = await response.json();
-    console.log(result, 'fetching single');
+    //console.log(result, 'fetching single');
     if (result.error) {
       throw result.error;
     }
     return result;
   } catch (error) {
-    console.error('tehere is an error', error);
+    console.error('there is an error', error);
   }
 };
 module.exports = {

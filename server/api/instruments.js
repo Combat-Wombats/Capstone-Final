@@ -39,8 +39,5 @@ router.get('/strings/:id', async (req, res, next) => {
 
 // ^^^^^ ADAM: api call for a single product view by id test --> (http://localhost:3000/api/instruments/strings/1)
 
-// POST /api/instruments/strings
-
-// PATCH /api/instruments/strings
 
 module.exports = router;

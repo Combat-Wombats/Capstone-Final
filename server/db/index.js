@@ -1,20 +1,19 @@
 const client = require('./client');
-// import woodwind from './instruments/woodwind';
 const { getUserByToken, createUser, authenticate } = require('./User');
 
 // const { createTables, dropTables } = require('./seedData');
 // ADAM: the line about requiring emoty files and functions ^^^^^
 
-const { createProducts } = require('./products.js');
+const { createProducts } = require('./products');
+const { createCategory } = require('./categories');
+const { createCart } = require('./Cart')
 
 const { strings } = require('./instruments/strings');
 const { accessories } = require('./instruments/accessories');
 const { brass } = require('./instruments/brass');
 const { drums } = require('./instruments/drums');
-
 const { woodwind } = require('./instruments/woodwind');
 
-const { createCategory } = require('./categories');
 
 const dropTables = async () => {
   const SQL = `
@@ -35,7 +34,7 @@ const syncTables = async () => {
 
 
   CREATE TABLE users(
-     id SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     username VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     email VARCHAR(255)
@@ -67,7 +66,7 @@ const syncTables = async () => {
       "orderId" INTEGER REFERENCES orders(id),
       "productId" INTEGER REFERENCES products(id),
       quantity INTEGER,
-       UNIQUE("orderId", "productId")
+      UNIQUE("orderId", "productId")
     );
   `;
   await client.query(SQL);
@@ -80,17 +79,14 @@ const getStrings = async strings => {
   for (let i = 0; i < strings.length; i++) {
     strings[i].categoryId = 1;
     mergedStrings = await createProducts(strings[i]);
-    //console.log('this is strigns', mergedStrings)
   }
 };
 
 const getAccessories = async accessories => {
-  //console.log('this is accessories', accessories)
   let mergedAccessories = ' ';
   for (let i = 0; i < accessories.length; i++) {
     accessories[i].categoryId = 2;
     mergedAccessories = await createProducts(accessories[i]);
-    //console.log('this is accessories', mergedAccessories)
   }
 };
 
@@ -99,7 +95,6 @@ const getBrass = async brass => {
   for (let i = 0; i < brass.length; i++) {
     brass[i].categoryId = 3;
     mergedBrass = await createProducts(brass[i]);
-    //console.log('this is brass', mergedBrass)
   }
 };
 
@@ -108,7 +103,6 @@ const getDrums = async drums => {
   for (let i = 0; i < drums.length; i++) {
     drums[i].categoryId = 4;
     mergedDrums = await createProducts(drums[i]);
-    // console.log('this is drums', mergedDrums)
   }
 };
 
@@ -117,7 +111,6 @@ const getWoodwind = async woodwind => {
   for (let i = 0; i < woodwind.length; i++) {
     woodwind[i].categoryId = 5;
     mergedWoodWind = await createProducts(woodwind[i]);
-    //console.log('this is woodwind', mergedWoodWind)
   }
 };
 
@@ -147,10 +140,14 @@ const syncAndSeed = async () => {
       email: 'lucy@lucy.com'
     })
   ]);
-  // console.log('--- seeded users ---');
-  // console.log(moe);
-  // console.log(lucy);
-  // console.log((strings))
+   console.log('--- seeded users ---');
+   const [moeCart, lucyCart] = await Promise.all([
+    createCart({ userId: moe.id }),
+    createCart({ userId: lucy.id }),
+   ]);
+  //  console.log('--- seeded carts ---');
+  //  await Promise.all(products.map((product)=> createProducts(product)));
+  //  console.log('--- seeded products ---');
 };
 
 module.exports = {
