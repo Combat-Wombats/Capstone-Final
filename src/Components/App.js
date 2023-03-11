@@ -10,7 +10,7 @@ import SingleProduct from './SingleProduct';
 const Search = ({ products })=>{
   const { term } = useParams();
   return (
-    <ul>
+    <ul >
       {
         products.filter(product => {
           return !term || product.name.includes(term)
@@ -67,18 +67,7 @@ useEffect(()=> {
     attemptLogin();
   }, []);
 
-  // useEffect(() => {
-  //   const exchangeTokenForUser = async () => {
-  //     const token = window.localStorage.getItem('token');
-  //     if (token) {
-  //       setToken(token)
-  //       const user = await fetchUser(token);
-  //       setUser(user);
-  //     }
-  //   };
-  //   exchangeTokenForUser();
-  // }, [token])
-
+ 
   const logout = ()=> {
     window.localStorage.removeItem('token');
     setAuth({});
@@ -111,17 +100,18 @@ const navigate = useNavigate();
   return (
     <div>
       <h1>Combat Wombat</h1>
-      <nav>
+      <nav className='main-nav' >
+        
         {
           auth.id ? (
-            <>
+            <div className='navBar'>
             <h3>Welcome: {user.username}</h3>
-              <Link to='/'>Home</Link>
-              <Link to='/allProducts'> All Products</Link>
+              <Link to='/'  style={{color: "white"}}>Home</Link>
+              <Link to='/allProducts' style={{color: "white"}}> All Products</Link>
               <Link to='/cart'>Cart</Link>
               <p>Cart()</p>
               <button onClick={ logout }>Logout { auth.username }</button>
-            </>
+            </div >
           ) : (
             <>
               <Link to='/login'>Login</Link>
@@ -133,13 +123,16 @@ const navigate = useNavigate();
         }
       </nav>
         <input 
-          placeholder='search for products' 
+          placeholder='Search for Products' 
           className='search'
           onChange = {
             (ev)=> {
               navigate(`/allProducts/search/${ev.target.value}`);
             }
-          }/>
+            
+          }
+          />
+          <button type="submit"><i className="material-icons">search</i></button>
       <Routes>
         {
           auth.id ? (

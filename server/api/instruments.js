@@ -16,34 +16,49 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// /api/instruments/strings
-router.get('/strings', async (req, res, next) => {
-  try {
-    const allStrings = await getstrings();
-    res.send(allStrings);
-  } catch (error) {
-    next(error);
-  }
-});
 
 // /api/instruments/strings/:id
 router.get('/strings/:id', async (req, res, next) => {
   try {
     const { id } = req.params;
-    const string = await getProductById(id);
-    res.send(string);
+    const strings = await getProductById(id);
+    res.send(strings);
   } catch (error) {
     next(error);
   }
 });
 
+// router.get('/brass/:id', async(req, res, next) => {
+//     try {
+//         const {id} = req.params;
+//         const brass = await getProductById(id);
+//         res.send(brass)
+//     } catch (error) {
+//         next(errpr)
+        
+//     }
+// });
 // ^^^^^ ADAM: api call for a single product view by id test --> (http://localhost:3000/api/instruments/strings/1)
 
 // /api/instruments/strings/:id
-router.get('/strings/:id', async (req, res)=>{
-    const { userId } = req. params;
-    const cart = await getCartByUserId({ userId });
-    res.send(cart);
-})
+// router.get('/strings/:id', async (req, res)=>{
+//     const { userId } = req. params;
+//     const cart = await getCartByUserId({ userId });
+//     res.send(cart);
+// })
 
+// post
+router.post('/carts/:productId', async (req, res) => {
+    const { productId } = req.params;
+    const user = await getUserByToken(req.headers.authorization);
+    if (!user) {
+      res.status(401).send({ error: 'Unauthorized' });
+      return;
+    }
+    const cart = await getCartByUserId({ userId: user.id });
+    await addProductToCart({ cartId: cart.id, productId });
+    const updatedCart = await getCartByUserId({ userId: user.id });
+    res.send(updatedCart);
+  });
+  
 module.exports = router;

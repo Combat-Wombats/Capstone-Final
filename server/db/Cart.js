@@ -37,27 +37,27 @@ const getCartByUserId = async ({ userId })=>{
     }
 };
 // add product to cart
-const addProductToCart = async ({ cartId, productId }) => {
+const addProductToCart = async ({ orderId, productId }) => {
     // check if product is already in cart
     const checkSQL = `
-      SELECT * FROM cart_products
-      WHERE cart_id = $1 AND product_id = $2
+      SELECT * FROM order_products
+      WHERE orderId = $1 AND productId = $2
     `;
-    const checkResponse = await client.query(checkSQL, [cartId, productId]);
+    const checkResponse = await client.query(checkSQL, [orderId, productId]);
     if (checkResponse.rows.length) {
       await client.query(
-        `UPDATE cart_products SET quantity = quantity + 1 WHERE cart_id = $1 AND product_id = $2`,
-        [cartId, productId]
+        `UPDATE order_products SET quantity = quantity + 1 WHERE orderId = $1 AND productId = $2`,
+        [orderId, productId]
       );
       return;
     }
   
     const SQL = `
-      INSERT INTO cart_products(product_id, cart_id)
+      INSERT INTO order_products(productId, orderId)
       VALUES($1, $2)
       RETURNING *
       `;
-    await client.query(SQL, [productId, cartId]);
+    await client.query(SQL, [productId, orderId]);
     return;
   };
   

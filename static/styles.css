@@ -12,12 +12,35 @@ form > * {
 }
 
 nav {
-  display: flex;
-  justify-content: space-around;
+  background-color:indigo;
+  padding: 10px
+  
+
 }
+
+.navBar {
+  color: white;
+  display: flex;
+  background-color:indigo;
+  justify-content: space-between;
+  padding: 10px
+  
+}
+
+button{
+  padding: 5px;
+  border: none;
+  background-color: indigo;
+  color: azure;
+}
+
 .search {
-  width: 100%;
+  width: 75%;
   margin: 1rem;
+  padding: 5px;
+  border: none;
+  border-bottom: 3px solid indigo;
+  flex-grow:1;
 }
 .all-products-container {
   padding: 20px;
@@ -58,7 +81,7 @@ nav {
 }
 
 .view-details-button {
-  background-color: #007bff;
+  background-color: indigo;
   color: #fff;
   padding: 10px 15px;
   border-radius: 5px;
@@ -67,10 +90,10 @@ nav {
 }
 
 .view-details-button:hover {
-  background-color: #0062cc;
+  background-color: rgb(160, 113, 193);
 }
 .continue-shopping-button {
-  background-color: #007bff;
+  background-color: rgb(160, 113, 193);
   color: #fff;
   padding: 10px 15px;
   border-radius: 5px;
