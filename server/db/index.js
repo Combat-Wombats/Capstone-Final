@@ -57,15 +57,15 @@ const syncTables = async () => {
     );
   CREATE TABLE orders (
     id SERIAL PRIMARY KEY,
-     is_active BOOLEAN DEFAULT true,
+    is_active BOOLEAN DEFAULT true,
     "userId" INTEGER REFERENCES users(id) ON DELETE CASCADE
     );
   CREATE TABLE order_products(
-      id SERIAL PRIMARY KEY,
-      "orderId" INTEGER REFERENCES orders(id),
-      "productId" INTEGER REFERENCES products(id),
-      quantity INTEGER,
-      UNIQUE("orderId", "productId")
+    id SERIAL PRIMARY KEY,
+    "orderId" INTEGER REFERENCES orders(id),
+    "productId" INTEGER REFERENCES products(id),
+    quantity INTEGER,
+    UNIQUE("orderId", "productId")
     );
   `;
   await client.query(SQL);

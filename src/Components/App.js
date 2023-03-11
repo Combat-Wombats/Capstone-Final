@@ -32,6 +32,7 @@ const App = ()=> {
   const [token, setToken] = useState(null)
   const [products, setProducts] = useState([]);
   const [product, setProduct] =useState([]);
+  const [cart, setCart] = useState({});
 
 useEffect(()=> {
     const fetchData = async () => {
@@ -41,13 +42,8 @@ useEffect(()=> {
     fetchData();
   }, [])
 
-  // useEffect(()=> {
-  //       const fetchSingleData = async (productId) => {
-  //         const fetchSingleProducts = await fetchSingleProduct(productId);
-  //         setProduct(fetchSingleProducts);
-  //       }
-  //       fetchSingleData();
-  //     }, [])
+  useEffect(()=> {
+      }, [])
 
   const attemptLogin = ()=> {
     const token = window.localStorage.getItem('token');
@@ -119,7 +115,11 @@ const navigate = useNavigate();
         {
           auth.id ? (
             <>
+            <h3>Welcome: {user.username}</h3>
               <Link to='/'>Home</Link>
+              <Link to='/allProducts'> All Products</Link>
+              <Link to='/cart'>Cart</Link>
+              <p>Cart()</p>
               <button onClick={ logout }>Logout { auth.username }</button>
             </>
           ) : (
@@ -145,6 +145,10 @@ const navigate = useNavigate();
           auth.id ? (
             <>
             <Route path='/' element= { <Home auth={ auth }/> } />
+            <Route path='/allProducts' element = {<AllProducts  products={products} setProducts={setProducts}/>} />
+            <Route path='/allProducts/search/:term' element = {<Search  products={products}/>} />
+            <Route path='/allProducts/search' element = {<Search  products={products}/>} />
+            <Route path='/allProducts/:productId' element = {<SingleProduct  product={product} setProduct={setProduct}/>} />
             </>
 
           ): (

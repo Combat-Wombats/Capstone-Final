@@ -39,8 +39,8 @@ router.get('/strings/:id', async (req, res, next) => {
 
 // ^^^^^ ADAM: api call for a single product view by id test --> (http://localhost:3000/api/instruments/strings/1)
 
-// /api/instruments/strings/:userId
-router.get('/strings/:userId', async (req, res)=>{
+// /api/instruments/strings/:id
+router.get('/strings/:id', async (req, res)=>{
     const { userId } = req. params;
     const cart = await getCartByUserId({ userId });
     res.send(cart);
