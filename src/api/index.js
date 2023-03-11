@@ -39,7 +39,7 @@ const fetchRegister = async (username, password) => {
 
 // const fetchUser = async (token) => {
 //     try {
-//         const response = await fetch('', {
+//         const response = await fetch('/api/users', {
 //             headers: {
 //                 'Content-Type': 'application/json',
 //                 'Authorization': `Bearer ${token}`

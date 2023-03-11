@@ -32,7 +32,6 @@ const syncTables = async () => {
   console.log('syncing tables');
   const SQL = `
 
-
   CREATE TABLE users(
     id SERIAL PRIMARY KEY,
     username VARCHAR(255) UNIQUE NOT NULL,
@@ -44,7 +43,7 @@ const syncTables = async () => {
     category VARCHAR (255) NOT NULL
     );
 
-    CREATE TABLE products (
+  CREATE TABLE products (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description TEXT,
@@ -56,12 +55,12 @@ const syncTables = async () => {
     shipping BOOLEAN,
     "categoryId" integer references categories(id)
     );
-    CREATE TABLE orders (
+  CREATE TABLE orders (
     id SERIAL PRIMARY KEY,
      is_active BOOLEAN DEFAULT true,
     "userId" INTEGER REFERENCES users(id) ON DELETE CASCADE
     );
-    CREATE TABLE order_products(
+  CREATE TABLE order_products(
       id SERIAL PRIMARY KEY,
       "orderId" INTEGER REFERENCES orders(id),
       "productId" INTEGER REFERENCES products(id),

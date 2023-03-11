@@ -41,13 +41,13 @@ useEffect(()=> {
     fetchData();
   }, [])
 
-  useEffect(()=> {
-        const fetchSingleData = async (productId) => {
-          const fetchSingleProducts = await fetchSingleProduct(productId);
-          setProduct(fetchSingleProducts);
-        }
-        fetchSingleData();
-      }, [])
+  // useEffect(()=> {
+  //       const fetchSingleData = async (productId) => {
+  //         const fetchSingleProducts = await fetchSingleProduct(productId);
+  //         setProduct(fetchSingleProducts);
+  //       }
+  //       fetchSingleData();
+  //     }, [])
 
   const attemptLogin = ()=> {
     const token = window.localStorage.getItem('token');
@@ -73,15 +73,16 @@ useEffect(()=> {
 
   // useEffect(() => {
   //   const exchangeTokenForUser = async () => {
-  //     let windowToken = window.localStorage.getItem('token');
-  //     if (windowToken) {
-  //       setToken(windowToken)
-  //       let user = await fetchUser(token);
+  //     const token = window.localStorage.getItem('token');
+  //     if (token) {
+  //       setToken(token)
+  //       const user = await fetchUser(token);
   //       setUser(user);
   //     }
   //   };
   //   exchangeTokenForUser();
   // }, [token])
+
   const logout = ()=> {
     window.localStorage.removeItem('token');
     setAuth({});
@@ -137,7 +138,6 @@ const navigate = useNavigate();
           onChange = {
             (ev)=> {
               navigate(`/allProducts/search/${ev.target.value}`);
-              //console.log(ev.target.value);
             }
           }/>
       <Routes>
@@ -149,7 +149,7 @@ const navigate = useNavigate();
 
           ): (
             <>
-            <Route path='/login' element= { <Login login={ login } token = {token}/> } />
+            <Route path='/login' element= { <Login login={ login } token = {token} user={user} setUser={setUser}/> } />
             <Route path='/register' element = {<Register setUser={setUser} setToken={setToken} token= {token}/>} />
             <Route path='/allProducts' element = {<AllProducts  products={products} setProducts={setProducts}/>} />
             <Route path='/allProducts/search/:term' element = {<Search  products={products}/>} />

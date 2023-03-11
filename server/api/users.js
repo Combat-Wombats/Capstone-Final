@@ -4,9 +4,9 @@ const {createUser, getUserByUsername, authenticate} = require('../db/User');
 const jwt = require('jsonwebtoken');
 //current route is /api/users
 
-userRouter.use((req, res,next) => {
+userRouter.use((req, res, next) => {
     console.log('a request is being made');
-   // res.send({ message: 'hello from /users'})
+    res.send({ message: 'hello from users' })
     next();
 })
 
