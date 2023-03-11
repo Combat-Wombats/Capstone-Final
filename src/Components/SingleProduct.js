@@ -1,36 +1,61 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { fetchSingleProduct } from '../api';
+import { Link } from 'react-router-dom';
+// ADAM: use --> useParams for single view
+// ADAM: added is loading when prodcuts doesn't exist
+const SingleProduct = () => {
+  const { productId } = useParams();
+  const [product, setProduct] = useState(null);
 
+  useEffect(
+    () => {
+      const fetchProduct = async () => {
+        const data = await fetchSingleProduct(productId);
+        setProduct(data);
+      };
+      fetchProduct();
+    },
+    [productId]
+  );
 
-const SingleProduct = (props) => {
-    const product = props.product;
-    
-  console.log(product, "this is indv")
-  
-    return (
-        <div> 
-            {
+  if (!product) {
+    return <div>Loading...</div>;
+  }
 
-            
+  return (
+    <div>
+      <h2>
+        {product.name}
+      </h2>
+      <p>
+        Price: {product.price}
+      </p>
+      <p>
+        Description: {product.description}
+      </p>
+      <p>
+        Features: {product.features}
+      </p>
+      <p>
+        Location: {product.location}
+      </p>
+      <div>
+        <button className="continue-shopping-button">
+          <Link
+            to="/allProducts"
+            style={{
+              textDecoration: 'none',
+              color: 'white',
+              fontWeight: 'bold'
+            }}
+          >
+            Continue Shopping
+          </Link>
+        </button>
+      </div>
+    </div>
+  );
+};
 
-                product.map((single) => {
-                  console.log(single, "test")
-                  
-                    return <div key={single.id}>
-                        <h3> Name: {single.name} </h3>
-                        <p> Description: {single.description}</p>
-                        <p> Features: {single.features} </p>
-                        <p> Price: {single.price} </p>
-                        <p> Location: {single.location} </p>
-                        <p> Will Deliver: {single.willDeliver} </p>
-                        <p> Used ? {single.used} </p>
-                        <p> Shipping ? {single.shipping} </p>
-                        </div> 
-                       
-                })
-            }
-          
-        </div>
-    )
-}
-
-export default SingleProduct
+export default SingleProduct;
