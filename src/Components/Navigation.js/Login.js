@@ -9,8 +9,8 @@ const Login = ({ login })=> {
     login({ username, password });
   };
   return (
-    <div>
-      <h2>Login</h2>
+    <div className='login-section'>
+      <h1>Login</h1>
       <form onSubmit={ _login }>
         <input
           placeholder='username'

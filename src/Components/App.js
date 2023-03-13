@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import Home from './Home';
 import Login from './Navigation.js/Login';
 import Register from './Navigation.js/Register';
-import { fetchUser, fetchAllProducts, fetchSingleProduct } from '../api';
+import { fetchUser, fetchAllProducts, fetchSingleProduct, fetchAllCategories } from '../api';
+
 import { Link, Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import AllProducts from './AllProducts';
 import SingleProduct from './SingleProduct';
 
+
 const Search = ({ products })=>{
   const { term } = useParams();
   return (
-    <ul>
+    <ul >
       {
         products.filter(product => {
           return !term || product.name.includes(term)
@@ -31,9 +33,10 @@ const App = ()=> {
   const [user, setUser] = useState({});
   const [token, setToken] = useState(null)
   const [products, setProducts] = useState([]);
-  const [ product, setProduct] =useState([]);
+  const [categories, setCategories] = useState([])
+  const [cart, setCart] = useState({});
 
-console.log('this is user', auth)
+
 useEffect(()=> {
     const fetchData = async () => {
       const fetchProducts = await fetchAllProducts();
@@ -41,13 +44,16 @@ useEffect(()=> {
     }
     fetchData();
   }, [])
+  
+useEffect(()=> {
+  const fetchData = async () => {
+    const fetchCategories = await fetchAllCategories();
+    setCategories(fetchCategories);
+  }
+  fetchData();
+}, [])
 
   useEffect(()=> {
-        const fetchSingleData = async (productId) => {
-          const fetchSingleProducts = await fetchSingleProduct(productId);
-          setProduct(fetchSingleProducts);
-        }
-        fetchSingleData();
       }, [])
 
   const attemptLogin = ()=> {
@@ -72,17 +78,7 @@ useEffect(()=> {
     attemptLogin();
   }, []);
 
-  // useEffect(() => {
-  //   const exchangeTokenForUser = async () => {
-  //     let windowToken = window.localStorage.getItem('token');
-  //     if (windowToken) {
-  //       setToken(windowToken)
-  //       let user = await fetchUser(token);
-  //       setUser(user);
-  //     }
-  //   };
-  //   exchangeTokenForUser();
-  // }, [token])
+ 
   const logout = ()=> {
     window.localStorage.removeItem('token');
     setAuth({});
@@ -115,46 +111,59 @@ const navigate = useNavigate();
   return (
     <div>
       <h1>Combat Wombat</h1>
-      <nav>
+      <nav className='main-nav' >
+        
         {
           auth.id ? (
-            <>
-              <Link to='/'>Home</Link>
+            <div className='navBar'>
+            <h3>Welcome: {user.username}</h3>
+              <Link to='/'  style={{color: "white"}}>Home</Link>
+              <Link to='/allProducts' style={{color: "white"}}> All Products</Link>
+              <Link to='/cart' style={{color: "white"}} >Cart</Link>
+              <p>Cart()</p>
               <button onClick={ logout }>Logout { auth.username }</button>
-            </>
+            </div >
           ) : (
             <>
               <Link to='/login'>Login</Link>
               <Link to='/register'>Register</Link>
               <Link to='/allProducts'> All Products</Link>
+              <Link to='/cart'>Cart</Link>
             </>
           )
         }
       </nav>
         <input 
-          placeholder='search for products' 
+          placeholder='Search for Products' 
           className='search'
           onChange = {
             (ev)=> {
               navigate(`/allProducts/search/${ev.target.value}`);
-              //console.log(ev.target.value);
             }
-          }/>
+            
+          }
+          />
+          <button type="submit"><i className="material-icons">search</i></button>
       <Routes>
         {
           auth.id ? (
             <>
             <Route path='/' element= { <Home auth={ auth }/> } />
+            <Route path='/allProducts' element = {<AllProducts  products={products} setProducts={setProducts}/>} />
+            <Route path='/allProducts/search/:term' element = {<Search  products={products}/>} />
+            <Route path='/allProducts/search' element = {<Search  products={products}/>} />
+            <Route path='/allProducts/:productId' element = {<SingleProduct  product={product} setProduct={setProduct}/>} />
             </>
 
           ): (
             <>
-            <Route path='/login' element= { <Login login={ login } token = {token}/> } />
+            <Route path='/login' element= { <Login login={ login } token = {token} user={user} setUser={setUser}/> } />
             <Route path='/register' element = {<Register setUser={setUser} setToken={setToken} token= {token}/>} />
-            <Route path='/allProducts' element = {<AllProducts  products={products} setProducts={setProducts}/>} />
+            <Route path='/allProducts' element = {<AllProducts categories={categories} products={products} setProducts={setProducts}/>} />
             <Route path='/allProducts/search/:term' element = {<Search  products={products}/>} />
             <Route path='/allProducts/search' element = {<Search  products={products}/>} />
-            <Route path='/singleProduct/:productId' element = {<SingleProduct  product={product} setProduct = {setProduct}/>} />
+            <Route path='/allProducts/:productId' element = {<SingleProduct  product={product} setProduct={setProduct}/>} />
+
             </>
           )
         }

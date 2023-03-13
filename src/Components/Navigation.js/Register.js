@@ -20,28 +20,28 @@ export const Register = (props) => {
         }
     };
     return (
-        <div>
-            <form className='register' onSubmit={register}>
-                <h1>Register</h1>
-                <div className='userPass'>
-                    <input
-                        placeholder='Username'
-                        value={username}
-                        onChange={ev => setUsername(ev.target.value)}
-                    />
-                    <input
-                        placeholder='Password'
-                        type='password'
-                        value={password}
-                        onChange={ev => setPassword(ev.target.value)}
-                    />
-                    <button>Register</button>
-                </div>
-                <Link to='/Login'>
-                    Already Have An Account? Click Here.
-                </Link>
-            </form>
+        <div className='register-section'>
+             <h1>Register</h1>
+              <form onSubmit={ register }>
+                <input
+                placeholder='username'
+                value = { username }
+                onChange = { ev => setUsername(ev.target.value) }
+                />
+                <input
+                placeholder='password'
+                type = 'password'
+                value={ password }
+                onChange = { ev => setPassword(ev.target.value) }
+                />
+                <button>Register</button>
+            </form>   
+            <Link to='/Login'>
+                Already Have An Account? Click Here.
+            </Link>
         </div>
+       
+
     );
 };
  
