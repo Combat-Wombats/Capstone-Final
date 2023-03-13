@@ -18,7 +18,7 @@ const getUserByToken = async(token) => {
   const SQL = `
     SELECT users.*
     FROM users
-    WHERE "userId" = $1 
+    WHERE id = $1 
   `;
   const response = await client.query(SQL, [ payload.id ]);
   if(!response.rows.length){
@@ -27,13 +27,13 @@ const getUserByToken = async(token) => {
     throw error;
   }
   const user = response.rows[0];
- delete user.password;
+  delete user.password;
   return payload; 
 }
 
 const authenticate = async({ username, password }) => {
   const SQL = `
-    SELECT "userId"
+    SELECT id
     FROM users
     WHERE username = $1 and password = $2
   `;
@@ -44,7 +44,7 @@ const authenticate = async({ username, password }) => {
     throw error;
   }
   console.log('this',response.rows)
-  return jwt.sign({ id: response.rows[0].userId }, JWT);
+  return jwt.sign({ id: response.rows[0].id }, JWT);
 }
 
 const getUserByUsername = async(username) => {
