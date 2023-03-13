@@ -7,6 +7,7 @@ import { fetchUser, fetchAllProducts, fetchSingleProduct, fetchAllCategories } f
 import { Link, Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import AllProducts from './AllProducts';
 import SingleProduct from './SingleProduct';
+import Cart from './Cart';
 
 
 const Search = ({ products })=>{
@@ -33,7 +34,8 @@ const App = ()=> {
   const [user, setUser] = useState({});
   const [token, setToken] = useState(null)
   const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([])
+  const [categories, setCategories] = useState([]);
+  const [product, setProduct] = useState([]);
   const [cart, setCart] = useState({});
 
 
@@ -71,6 +73,9 @@ useEffect(()=> {
       .then( response => response.json())
       .then( user => setAuth(user));
       
+      fetch(`/carts/${user.id}`)
+            .then((response) => response.json())
+            .then((cart) => setCart(cart));
     }
   };
 
@@ -119,8 +124,7 @@ const navigate = useNavigate();
             <h3>Welcome: {user.username}</h3>
               <Link to='/'  style={{color: "white"}}>Home</Link>
               <Link to='/allProducts' style={{color: "white"}}> All Products</Link>
-              <Link to='/cart' style={{color: "white"}} >Cart</Link>
-              <p>Cart()</p>
+              <Link to='/cart' style={{color: "white"}} >Cart ({cart.products?.length})</Link>
               <button onClick={ logout }>Logout { auth.username }</button>
             </div >
           ) : (
@@ -128,7 +132,7 @@ const navigate = useNavigate();
               <Link to='/login'>Login</Link>
               <Link to='/register'>Register</Link>
               <Link to='/allProducts'> All Products</Link>
-              <Link to='/cart'>Cart</Link>
+              {/* <Link to='/cart'>Cart</Link> */}
             </>
           )
         }
@@ -153,6 +157,7 @@ const navigate = useNavigate();
             <Route path='/allProducts/search/:term' element = {<Search  products={products}/>} />
             <Route path='/allProducts/search' element = {<Search  products={products}/>} />
             <Route path='/allProducts/:productId' element = {<SingleProduct  product={product} setProduct={setProduct}/>} />
+            <Route path='/cart' element = {<Cart cart = {cart} setCart = { setCart}/>} />
             </>
 
           ): (

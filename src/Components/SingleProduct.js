@@ -41,6 +41,23 @@ const SingleProduct = () => {
         Location: {product.location}
       </p>
       <div>
+
+        <button className="add-to-cart">
+
+          <Link
+            to="/cart"
+            style={{
+              textDecoration: 'none',
+              color: 'white',
+              fontWeight: 'bold'
+            }}
+          >
+            Add to Cart
+          </Link>
+        </button>
+      </div>
+
+      <div>
         <button className="continue-shopping-button">
           <Link
             to="/allProducts"
