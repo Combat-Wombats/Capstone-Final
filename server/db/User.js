@@ -20,7 +20,7 @@ const getUserByToken = async(token) => {
     FROM users
     WHERE id = $1 
   `;
-  const response = await client.query(SQL, [ payload.id]);
+  const response = await client.query(SQL, [ payload.id ]);
   if(!response.rows.length){
     const error = Error('not authorized');
     error.status = 401;

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Home from './Home';
 import Login from './Navigation.js/Login';
 import Register from './Navigation.js/Register';
-import { fetchUser, fetchAllProducts, fetchSingleProduct } from '../api';
+import { fetchUser, fetchAllProducts, fetchSingleProduct, fetchAllCategories } from '../api';
+
 import { Link, Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import AllProducts from './AllProducts';
 import SingleProduct from './SingleProduct';
@@ -32,8 +33,9 @@ const App = ()=> {
   const [user, setUser] = useState({});
   const [token, setToken] = useState(null)
   const [products, setProducts] = useState([]);
-  const [product, setProduct] =useState([]);
+  const [categories, setCategories] = useState([])
   const [cart, setCart] = useState({});
+
 
 useEffect(()=> {
     const fetchData = async () => {
@@ -42,6 +44,14 @@ useEffect(()=> {
     }
     fetchData();
   }, [])
+  
+useEffect(()=> {
+  const fetchData = async () => {
+    const fetchCategories = await fetchAllCategories();
+    setCategories(fetchCategories);
+  }
+  fetchData();
+}, [])
 
   useEffect(()=> {
       }, [])
@@ -109,7 +119,7 @@ const navigate = useNavigate();
             <h3>Welcome: {user.username}</h3>
               <Link to='/'  style={{color: "white"}}>Home</Link>
               <Link to='/allProducts' style={{color: "white"}}> All Products</Link>
-              <Link to='/cart'>Cart</Link>
+              <Link to='/cart' style={{color: "white"}} >Cart</Link>
               <p>Cart()</p>
               <button onClick={ logout }>Logout { auth.username }</button>
             </div >
@@ -149,7 +159,7 @@ const navigate = useNavigate();
             <>
             <Route path='/login' element= { <Login login={ login } token = {token} user={user} setUser={setUser}/> } />
             <Route path='/register' element = {<Register setUser={setUser} setToken={setToken} token= {token}/>} />
-            <Route path='/allProducts' element = {<AllProducts  products={products} setProducts={setProducts}/>} />
+            <Route path='/allProducts' element = {<AllProducts categories={categories} products={products} setProducts={setProducts}/>} />
             <Route path='/allProducts/search/:term' element = {<Search  products={products}/>} />
             <Route path='/allProducts/search' element = {<Search  products={products}/>} />
             <Route path='/allProducts/:productId' element = {<SingleProduct  product={product} setProduct={setProduct}/>} />

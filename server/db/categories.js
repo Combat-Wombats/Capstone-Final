@@ -1,8 +1,5 @@
 const client = require('./client');
 
-//const jwt = require('jsonwebtoken');
-//const JWT = process.env.JWT;
-
 const createCategory = async ({category})=>{
  try {
   const SQL = `
@@ -17,9 +14,21 @@ const createCategory = async ({category})=>{
   
   }
 }
+
+const getCategories = async ()=>{
+  try {
+    const SQL = `
+    SELECT * FROM categories`;
+    const response = await client.query(SQL)
+    return response.rows
+  } catch (error) {
+    console.log(error)
+  }
+}
   
 
 
 module.exports = {
-  createCategory
+  createCategory,
+  getCategories
 }

@@ -1,4 +1,6 @@
+
 const url = 'http://localhost:3000';
+
 
 const fetchRegister = async (username, password) => {
   try {
@@ -70,15 +72,31 @@ const fetchSingleProduct = async productId => {
     if (result.error) {
       throw result.error;
     }
-    return result;
+       return result;
   } catch (error) {
     console.error('there is an error', error);
   }
 };
+
+
+const fetchAllCategories = async()=>{
+    try {
+        const response = await fetch(`${url}/api/categories`);
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+
+ 
 module.exports = {
   fetchRegister,
   //fetchLogin,
   //fetchUser,
   fetchAllProducts,
-  fetchSingleProduct
+  fetchSingleProduct,
+  fetchAllCategories,
 };
+

@@ -1,4 +1,9 @@
 const client = require('./client');
+
+
+const {createCategory, getCategories} = require('./categories');
+
+
 const { getUserByToken, createUser, authenticate } = require('./User');
 
 // const { createTables, dropTables } = require('./seedData');
@@ -16,6 +21,7 @@ const { woodwind } = require('./instruments/woodwind');
 
 
 const dropTables = async () => {
+
   const SQL = `
   DROP TABLE IF EXISTS order_products;
   DROP TABLE IF EXISTS orders;
@@ -155,5 +161,9 @@ module.exports = {
   createUser,
   authenticate,
   getUserByToken,
+  createTables,
+  dropTables,
+  getCategories,
   client
+
 };
