@@ -38,7 +38,7 @@ const getCartByUserId = async ({ userId })=>{
 };
 // add product to cart
 const addProductToCart = async ({ orderId, productId }) => {
-    // check if product is already in cart
+    
     const checkSQL = `
       SELECT * FROM order_products
       WHERE orderId = $1 AND productId = $2

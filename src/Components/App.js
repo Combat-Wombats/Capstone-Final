@@ -7,6 +7,7 @@ import { Link, Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import AllProducts from './AllProducts';
 import SingleProduct from './SingleProduct';
 
+
 const Search = ({ products })=>{
   const { term } = useParams();
   return (
