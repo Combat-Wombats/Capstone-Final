@@ -10,8 +10,8 @@ const { getUserByToken, createUser, authenticate } = require('./User');
 // ADAM: the line about requiring emoty files and functions ^^^^^
 
 const { createProducts } = require('./products');
-const { createCategory } = require('./categories');
-const { createCart } = require('./Cart')
+
+const { createCart } = require('./cart')
 
 const { strings } = require('./instruments/strings');
 const { accessories } = require('./instruments/accessories');
@@ -161,7 +161,7 @@ module.exports = {
   createUser,
   authenticate,
   getUserByToken,
-  createTables,
+ //createTables,
   dropTables,
   getCategories,
   client

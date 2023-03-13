@@ -2,46 +2,46 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 const AllProducts = props => {
   const products = props.products;
-  //  const categories = props.categories;
-   // const all = [];
+//    const categories = props.categories;
+//    const all = [];
     
-   // categories.forEach(category => {
+//    categories.forEach(category => {
 
 //        all.push(category)
-  //      products.forEach(product => {
-    //        if (product.categoryId === category.id){
+//        products.forEach(product => {
+//            if (product.categoryId === category.id){
            
-      //      all.push(product)
-        //    }
-        //})
+//            all.push(product)
+//            }
+//         })
         
-    //})
-    //function handleClick(caller){
-      //  console.log(caller.target)
-        //const productList = document.getElementsByClassName("product")
-        //console.log(productList, "product list")
-        //const productArray=Array.from(productList)
-       // const categoryId= caller.target.classList[0]
-        //console.log(categoryId)
-       // productArray.forEach((el)=>{
-         //   el.style.display="none"
-        //}
-        //)
-       // productArray.forEach((el)=>{
-         //   const classArray=Array.from(el.classList)
-           // const classes=classArray.find(
-             //   (className) => 
-               // {
-               // if(className==categoryId){
-                 //   return true
-               // }
-               // return false
-           // })
-           // if(classes){
-             //   el.style.display="block"
-            //}
-       // })
-       // }
+//     })
+//     function handleClick(caller){
+//        console.log(caller.target)
+//         const productList = document.getElementsByClassName("product")
+//         console.log(productList, "product list")
+//         const productArray=Array.from(productList)
+//        const categoryId= caller.target.classList[0]
+//         console.log(categoryId)
+//        productArray.forEach((el)=>{
+//            el.style.display="none"
+//         }
+//         )
+//        productArray.forEach((el)=>{
+//            const classArray=Array.from(el.classList)
+//            const classes=classArray.find(
+//                (className) => 
+//                {
+//                if(className==categoryId){
+//                    return true
+//                }
+//                return false
+//            })
+//            if(classes){
+//                el.style.display="block"
+//             }
+//        })
+//        }
     
 
 
@@ -51,7 +51,7 @@ const AllProducts = props => {
     <div className="all-products-container">
       <h2 className="title"> Our Products</h2>
       <div className="products-container">
-      //lex
+      {/* //lex
       {
                 all.map((category)=>{
                     return <div key={all.id} onClick={handleClick}>
@@ -61,7 +61,7 @@ const AllProducts = props => {
                 })
                
             }
-      //end of lex
+      //end of lex */}
         {products.map(product => {
           return (
             <div key={product.id} className={`product ${product.categoryId}`} style ={{

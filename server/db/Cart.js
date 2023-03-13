@@ -61,9 +61,31 @@ const addProductToCart = async ({ orderId, productId }) => {
     return;
   };
   
+// remove product from cart
+const deleteProductFromCart = async ({ orderId, productId }) => {
+  const SQL = `
+    DELETE FROM order_products
+    WHERE "orderId" = $2 AND "productId" = $1
+  `;
+  await client.query(SQL, [productId, orderId]);
+  return;
+};
+
+const purchaseCart = async ({ orderId, userId }) => {
+  const SQL = `
+  UPDATE orders
+  SET is_active = false
+  WHERE id = $1
+  `;
+  await client.query(SQL, [orderId]);
+  const newCart = await createCart({ userId });
+  return newCart;
+};
 
 module.exports = {
     createCart,
     getCartByUserId,
-    addProductToCart
+    addProductToCart,
+    deleteProductFromCart,
+    purchaseCart
 }
