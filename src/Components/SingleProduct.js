@@ -1,12 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchSingleProduct } from '../api';
+import { fetchAddToCart, fetchMyCart, fetchSingleProduct } from '../api';
 import { Link } from 'react-router-dom';
 // ADAM: use --> useParams for single view
 // ADAM: added is loading when prodcuts doesn't exist
-const SingleProduct = () => {
+const SingleProduct = ({setCart}) => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
+
+  const addToCartFe = async()=>{
+    const data ={orderId: 555, productId}; // this data will be ignored for now
+    const response = await fetchAddToCart(productId);
+    console.log("add to cart response is here", response);
+    // refreshing cart number
+    fetchMyCart()
+    .then((data)=>{
+      console.log("fetchovan cart", data);
+      if(data && Array.isArray(data.products)){
+        setCart(data)
+      }
+    })
+    
+  }
 
   useEffect(
     () => {
@@ -42,18 +57,18 @@ const SingleProduct = () => {
       </p>
       <div>
 
-        <button className="add-to-cart">
+        <button className="add-to-cart" onClick={addToCartFe}>
 
-          <Link
-            to="/cart"
+          
+            {/* to="/carts"
             style={{
               textDecoration: 'none',
               color: 'white',
               fontWeight: 'bold'
-            }}
-          >
+            }} */}
+          
             Add to Cart
-          </Link>
+         
         </button>
       </div>
 

@@ -4,7 +4,8 @@ const db = require('../db');
 const router = express.Router();
 const { getstrings } = require('../db/index');
 const { getProducts, getProductById } = require('../db/products');
-const { getCartByUserId } = require('../db/cart')
+const { getCartByUserId, addProductToCart, createCart } = require('../db/cart')
+const {getUserByToken} = require("../db/User")
 
 // /api/instruments
 router.get('/', async (req, res, next) => {
@@ -42,9 +43,13 @@ router.get('/strings/:id', async (req, res, next) => {
 
 //api/instruments/strings/:id
 router.get('/carts/:userId', async (req, res)=>{
+    // get my/user cart
     const { userId } = req. params;
     const cart = await getCartByUserId({ userId });
+    console.log('--- /carts/:userId', userId);
+    console.log('test 3', typeof cart);
     res.send(cart);
+    return;
 })
 router.post('/carts', async (req, res) => {
     const user = await getUserByToken(req.headers.authorization);
@@ -55,12 +60,25 @@ router.post('/carts', async (req, res) => {
 // post
 router.post('/carts/:productId', async (req, res) => {
     const { productId } = req.params;
-    const user = await getUserByToken(req.headers.authorization);
+    
+    // const user = await getUserByToken(req.headers.authorization);
+    // const user = await getUserByToken(req.headers.authorization);
+    const token = req.headers['authorization']; 
+    const user = await getUserByToken(token);
     if (!user) {
       res.status(401).send({ error: 'Unauthorized' });
       return;
     }
-    const order = await getCartByUserId({ userId: user.id });
+    // res.send({laziramoDaJeUspjelo: true});
+    // return;
+    let order = await getCartByUserId({ userId: user.id });
+    if (!(order && order.id)) {
+        // znaci da nemammo order
+        await createCart({userId: user.id})
+        ///res.status(401).send({ error: 'order not success' });
+        // return;
+    }
+    order = await getCartByUserId({ userId: user.id });
     await addProductToCart({ orderId: order.id, productId });
     const updatedCart = await getCartByUserId({ userId: user.id });
     res.send(updatedCart);

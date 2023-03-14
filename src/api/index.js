@@ -1,16 +1,17 @@
+// import jwt from "jsonwebtoken";
+// import jwt_decode from "jwt-decode";
 
-const url = 'http://localhost:3000';
-
+const url = "http://localhost:3000";
 
 const fetchRegister = async (username, password) => {
   try {
     const response = await fetch(`/api/users/register`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         username: username,
-        password: password
-      })
+        password: password,
+      }),
     });
     const result = await response.json();
     return result;
@@ -64,7 +65,7 @@ const fetchAllProducts = async () => {
   }
 };
 
-const fetchSingleProduct = async productId => {
+const fetchSingleProduct = async (productId) => {
   try {
     const response = await fetch(`/api/instruments/strings/${productId}`);
     const result = await response.json();
@@ -72,25 +73,55 @@ const fetchSingleProduct = async productId => {
     if (result.error) {
       throw result.error;
     }
-       return result;
+    return result;
   } catch (error) {
-    console.error('there is an error', error);
+    console.error("there is an error", error);
   }
 };
 
+const fetchAllCategories = async () => {
+  try {
+    const response = await fetch(`${url}/api/categories`);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-const fetchAllCategories = async()=>{
-    try {
-        const response = await fetch(`${url}/api/categories`);
-        const result = await response.json();
-        return result;
-    } catch (error) {
-        console.error(error)
-    }
-}
+const fetchAddToCart = async (productId, data) => {
+  try {
+    const token = window.localStorage.getItem("token");
+    const response = await fetch(`${url}/api/instruments/carts/${productId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+      body: JSON.stringify(data),
+    });
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
+const fetchMyCart = async () => {
+    const userId = 3;
+  // const token = window.localStorage.getItem("token");
+  // const decodedToken = jwt.decode(token);
+  // const decodedToken = jwt_decode(token);
+  // const userId = decodedToken.id; // njega deokdiramo iz tokena u tokenu je spakovan pod imenom id
+  try {
+    const response = await fetch(`${url}/api/instruments/carts/${userId}`);
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
- 
 module.exports = {
   fetchRegister,
   //fetchLogin,
@@ -98,5 +129,6 @@ module.exports = {
   fetchAllProducts,
   fetchSingleProduct,
   fetchAllCategories,
+  fetchAddToCart,
+  fetchMyCart
 };
-
