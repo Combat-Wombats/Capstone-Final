@@ -4,7 +4,7 @@ import { fetchAddToCart, fetchMyCart, fetchSingleProduct } from '../api';
 import { Link } from 'react-router-dom';
 // ADAM: use --> useParams for single view
 // ADAM: added is loading when prodcuts doesn't exist
-const SingleProduct = ({setCart}) => {
+const SingleProduct = ({setCart, auth}) => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
 
@@ -13,7 +13,7 @@ const SingleProduct = ({setCart}) => {
     const response = await fetchAddToCart(productId);
     console.log("add to cart response is here", response);
     // refreshing cart number
-    fetchMyCart()
+    fetchMyCart(auth.id)
     .then((data)=>{
       console.log("fetchovan cart", data);
       if(data && Array.isArray(data.products)){

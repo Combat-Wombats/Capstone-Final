@@ -37,7 +37,7 @@ const Cart = ({ cart, setCart }) => {
   const deleteProductFromCart = async (productId) => {
     const token = window.localStorage.getItem('token');
     if (!token) return;
-    const response = await fetch(`/carts/${productId}`, {
+    const response = await fetch(`/api/instruments/carts/${productId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
