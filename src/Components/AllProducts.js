@@ -27,10 +27,12 @@ const AllProducts = props => {
   return (
     <div className="all-products-container">
       <h2 className="title"> Our Products</h2>
-      <div style={{display:"flex", justifyContent:"center", padding:"1rem"}}>
+
+      <div className = "categorical">
                 {
                   categories.map((category)=>{
-                    return <div style={{width: "200px", border:"1px solid black",textAlign:"center", padding:"1rem"}} onClick={handleClick}>
+                    return <div className="individualCategory" onClick={handleClick}>
+
                     <h3 className={category.id}> {category.category} </h3>
                     </div>
                   })

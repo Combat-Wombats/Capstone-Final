@@ -92,6 +92,26 @@ button{
   grid-gap: 20px;
 }
 
+.categorical {
+  display:flex; 
+  justify-content:center;
+  padding:1rem; 
+  color:#D1FEE7;
+  
+}
+
+.individualCategory{
+  width: 200px; 
+  border:1px solid #D1FEE7;
+  text-align:center;
+  padding:1rem;
+}
+
+.individualCategory:hover {
+  background-color: black;
+  cursor:pointer;
+}
+
 .single-product {
   border: 1px solid #ccc;
   border-radius: 5px;
