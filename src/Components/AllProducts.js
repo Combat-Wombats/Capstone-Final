@@ -6,14 +6,16 @@ const AllProducts = props => {
     const all = [];
     
     function handleClick(caller){
-        console.log(caller.target)
+        //console.log(caller.target)
         const productList = document.getElementsByClassName("product")
-        console.log(productList, "product list")
         const productArray=Array.from(productList)
         const categoryId= caller.target.classList[0]
-        console.log(categoryId)
+        const products = "product " + categoryId
         productArray.forEach((el)=>{
-            el.style.display="none"
+            el.style.display="none";
+            if (products === el.className){
+              el.style.display="flex"
+            }
         }
         )
       }
