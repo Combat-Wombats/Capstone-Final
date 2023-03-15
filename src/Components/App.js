@@ -106,10 +106,15 @@ const App = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <h1>Combat Wombat</h1>
-      <nav className="main-nav">
-        {auth.id ? (
-          <div className="navBar">
+      <div className="headerContainer">
+      <img src="static/logo.png"></img>
+      <h1 className="header">Combat Wombat Commerce</h1>
+      <nav className='main-nav' >
+      
+        
+        {
+          auth.id ? (
+            <div className='navBar'>
             <h3>Welcome: {user.username}</h3>
             <Link to="/" style={{ color: "white" }}>
               Home
@@ -142,16 +147,18 @@ const App = () => {
           </>
         )}
       </nav>
-      <input
-        placeholder="Search for Products"
-        className="search"
-        onChange={(ev) => {
-          navigate(`/allProducts/search/${ev.target.value}`);
-        }}
-      />
-      <button type="submit">
-        <i className="material-icons">search</i>
-      </button>
+      </div>
+        <input 
+          placeholder='Search for Products' 
+          className='search'
+          onChange = {
+            (ev)=> {
+              navigate(`/allProducts/search/${ev.target.value}`);
+            }
+            
+          }
+          />
+          <button type="submit"><i className="material-icons">search</i></button>
       <Routes>
         {auth.id ? (
           <>

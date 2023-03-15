@@ -5,6 +5,11 @@ body {
 form {
   display: flex;
   flex-direction: column;
+  background-color: #CE9C7B
+}
+
+html {
+  background-color: #CE9C7B
 }
 
 form > * {
@@ -16,6 +21,30 @@ nav {
   padding: 10px
   
 
+}
+
+.headerContainer{
+  background-color: #D1FEE7
+}
+
+.main-nav{
+  background-color: #D1FEE7;
+  display:flex;
+  justify-content: space-around;
+  border:1px  #D1FEE7;
+  border-style:double;
+  border-top-color: #CE9C7B
+}
+
+.header{
+ color:#CE9C7B; 
+ position: absolute;
+ top:0%;
+ right:1%;
+}
+img{
+  height:80px;
+  margin-bottom: 14px;
 }
 
 .navBar {
@@ -30,17 +59,19 @@ nav {
 
 button{
   padding: 5px;
-  border: none;
-  background-color: indigo;
-  color: azure;
+    border: 1px solid #D1FEE7;
+    background-color: #CE9C7B;
+    color: #D1FEE7;
+    display: inline;
+    vertical-align: middle;
 }
 
 .search {
-  width: 75%;
+  width: 90%;
   margin: 1rem;
   padding: 5px;
   border: none;
-  border-bottom: 3px solid indigo;
+  border-bottom: 3px solid  #D1FEE7;
   flex-grow:1;
 }
 .all-products-container {
@@ -82,8 +113,8 @@ button{
 }
 
 .view-details-button {
-  background-color: indigo;
-  color: #fff;
+  background-color:  #D1FEE7;
+  color: black;
   padding: 10px 15px;
   border-radius: 5px;
   text-align: center;
@@ -114,6 +145,11 @@ button{
   margin: 30px auto;
   padding: 5px
 
+}
+
+.material-icons{
+  background-color:#CE9C7B;
+  border-color: #CE9C7B;
 }
 
 .register {
