@@ -117,7 +117,7 @@ const App = () => {
             <div className='navBar'>
             <h3>Welcome: {user.username}</h3>
             <Link to="/" style={{ color: "white" }}>
-              Home
+              Home 
             </Link>
             <Link to="/allProducts" style={{ color: "white" }}>
               {" "}
