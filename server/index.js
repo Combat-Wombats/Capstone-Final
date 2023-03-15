@@ -14,6 +14,7 @@ const init = async () => {
   }
 };
 
+
 init();
 
 // ADAM: syncAndSeed was commented out here

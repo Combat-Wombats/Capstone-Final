@@ -4,7 +4,7 @@ const db = require('../db');
 const router = express.Router();
 const { getstrings } = require('../db/index');
 const { getProducts, getProductById } = require('../db/products');
-const { getCartByUserId, addProductToCart, createCart } = require('../db/cart')
+const { getCartByUserId, addProductToCart, createCart, deleteProductFromCart } = require('../db/cart')
 const {getUserByToken} = require("../db/User")
 
 // /api/instruments

@@ -107,8 +107,8 @@ const fetchAddToCart = async (productId, data) => {
   }
 };
 
-const fetchMyCart = async () => {
-    const userId = 3;
+const fetchMyCart = async (userId) => {
+
   // const token = window.localStorage.getItem("token");
   // const decodedToken = jwt.decode(token);
   // const decodedToken = jwt_decode(token);

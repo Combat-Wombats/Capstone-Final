@@ -66,11 +66,12 @@ const App = () => {
         },
       })
         .then((response) => response.json())
-        .then((user) => setAuth(user));
+        .then((user) => {
+          setAuth(user)
+          fetch(`/api/instruments/carts/${user.id}`)
+          .then((response) => response.json())
+          .then((cart) => setCart(cart))});
 
-      fetch(`/carts/${user.id}`)
-        .then((response) => response.json())
-        .then((cart) => setCart(cart));
     }
   };
 
@@ -185,7 +186,7 @@ const App = () => {
             <Route
               path="/allProducts/:productId"
               element={
-                <SingleProduct product={product} setProduct={setProduct} setCart={setCart} />
+                <SingleProduct product={product} setProduct={setProduct} setCart={setCart} auth= {auth} />
               }
             />
             <Route
