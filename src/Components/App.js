@@ -115,8 +115,11 @@ useEffect(()=> {
 const navigate = useNavigate();
   return (
     <div>
-      <h1>Combat Wombat</h1>
+      <div className="headerContainer">
+      <img src="static/logo.png"></img>
+      <h1 className="header">Combat Wombat Commerce</h1>
       <nav className='main-nav' >
+      
         
         {
           auth.id ? (
@@ -137,6 +140,7 @@ const navigate = useNavigate();
           )
         }
       </nav>
+      </div>
         <input 
           placeholder='Search for Products' 
           className='search'

@@ -1,5 +1,5 @@
 
-const url = 'http://localhost:3000';
+const url = 'https://dc3aa463d8c9449cbae8b9dd19642048.vfs.cloud9.us-east-1.amazonaws.com:8080/';
 
 
 const fetchRegister = async (username, password) => {
