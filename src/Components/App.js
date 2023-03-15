@@ -172,7 +172,7 @@ const App = () => {
             <Route
               path="/allProducts"
               element={
-                <AllProducts products={products} setProducts={setProducts} />
+                <AllProducts products={products} setProducts={setProducts} categories={categories} />
               }
             />
             <Route

@@ -72,7 +72,7 @@ const AllProducts = props => {
                         <p> Will Deliver: {product.willDeliver} </p>
                         <p> Used ? {product.used} </p>
                         <p> Shipping ? {product.shipping} </p> */}
-                        <p> category: {product.categoryId} </p>
+                        {/* <p> category: {product.categoryId} </p> */}
               <Link
                 to={`/allProducts/${product.id}`}
                 className="view-details-button"
