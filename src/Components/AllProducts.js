@@ -2,46 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 const AllProducts = props => {
   const products = props.products;
-//    const categories = props.categories;
-//    const all = [];
+    const categories = props.categories;
+    const all = [];
     
-//    categories.forEach(category => {
-
-//        all.push(category)
-//        products.forEach(product => {
-//            if (product.categoryId === category.id){
-           
-//            all.push(product)
-//            }
-//         })
-        
-//     })
-//     function handleClick(caller){
-//        console.log(caller.target)
-//         const productList = document.getElementsByClassName("product")
-//         console.log(productList, "product list")
-//         const productArray=Array.from(productList)
-//        const categoryId= caller.target.classList[0]
-//         console.log(categoryId)
-//        productArray.forEach((el)=>{
-//            el.style.display="none"
-//         }
-//         )
-//        productArray.forEach((el)=>{
-//            const classArray=Array.from(el.classList)
-//            const classes=classArray.find(
-//                (className) => 
-//                {
-//                if(className==categoryId){
-//                    return true
-//                }
-//                return false
-//            })
-//            if(classes){
-//                el.style.display="block"
-//             }
-//        })
-//        }
+    function handleClick(caller){
+        //console.log(caller.target)
+        const productList = document.getElementsByClassName("product")
+        const productArray=Array.from(productList)
+        const categoryId= caller.target.classList[0]
+        const products = "product " + categoryId
+        productArray.forEach((el)=>{
+            el.style.display="none";
+            if (products === el.className){
+              el.style.display="flex"
+            }
+        }
+        )
+      }
     
 
 
@@ -50,6 +27,15 @@ const AllProducts = props => {
   return (
     <div className="all-products-container">
       <h2 className="title"> Our Products</h2>
+      <div style={{display:"flex", justifyContent:"center", padding:"1rem"}}>
+                {
+                  categories.map((category)=>{
+                    return <div style={{width: "200px", border:"1px solid black",textAlign:"center", padding:"1rem"}} onClick={handleClick}>
+                    <h3 className={category.id}> {category.category} </h3>
+                    </div>
+                  })
+                }
+                    </div>
       <div className="products-container">
       {/* //lex
       {

@@ -155,6 +155,11 @@ const App = () => {
           onChange = {
             (ev)=> {
               navigate(`/allProducts/search/${ev.target.value}`);
+              if(ev.target.value === ""){
+                navigate(`/allProducts`)
+              } else {
+                navigate(`/allProducts/search/${ev.target.value}`);
+              }
             }
             
           }
