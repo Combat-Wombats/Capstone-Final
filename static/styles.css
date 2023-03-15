@@ -52,6 +52,7 @@ img{
   display: flex;
   background-color:indigo;
   justify-content: space-between;
+  align-items: center;
   padding: 10px
   
 }
@@ -130,7 +131,13 @@ button{
   border-radius: 5px;
   text-align: center;
 }
-
+.add-to-cart {
+  background-color: rgb(160, 113, 193);
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-align: center;
+}
 .register-section  {
   width: 213px;
   height: 36px;

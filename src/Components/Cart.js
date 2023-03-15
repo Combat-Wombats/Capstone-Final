@@ -1,6 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { fetchMyCart,fetchAddToCart} from "../api"
+
 
 const Cart = ({ cart, setCart }) => {
+
+  const refresh = ()=>{
+    fetchMyCart()
+    .then((data)=>{
+      console.log("fetchovan cart", data);
+      if(data && Array.isArray(data.products)){
+        setCart(data)
+      }
+    })
+  };
+
+  useEffect(()=>{
+    refresh(); // first fetch
+  }, []);
+
+  const addToCartFe = async(productId)=>{
+    const data ={orderId: 555, productId}; // this data is ignored for now
+    const response = await fetchAddToCart(productId);
+    console.log("add to cart response is here", response);
+    // refreshing cart number
+    fetchMyCart()
+    .then((data)=>{
+      console.log("fetchovan cart", data);
+      if(data && Array.isArray(data.products)){
+        setCart(data);
+        // after cart update do refresh
+        refresh();
+      }
+    })
+  }
+
   const deleteProductFromCart = async (productId) => {
     const token = window.localStorage.getItem('token');
     if (!token) return;
@@ -36,12 +69,18 @@ const Cart = ({ cart, setCart }) => {
   console.log('Cart: ', cart);
   return (
     <div>
-      <h2>My products:</h2>
+      <h2>Cart:</h2>
       <ul>
         {cart.products?.map((product) => {
           return (
             <li>
               {product.name}({product.quantity})
+              <div>
+              <button onClick={async ()=>{
+                addToCartFe(product.id)
+              }}> + </button>
+              </div>
+              
               <button
                 onClick={async () => {
                   const updatedCart = await deleteProductFromCart(product.id);
