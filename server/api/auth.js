@@ -19,7 +19,9 @@ router.post('/', async(req, res, next)=> {
   }
 });
 
+
 router.get('/', async(req, res, next)=> {
+  // auto login when app started
   try {
     res.send(await getUserByToken(req.headers.authorization)); 
   }
