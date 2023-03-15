@@ -48,22 +48,33 @@ img{
 }
 
 .navBar {
-  color: white;
+  color:#D1FEE7;
   display: flex;
-  background-color:indigo;
+  background-color:#D1FEE7;
   justify-content: space-between;
   align-items: center;
   padding: 10px
   
 }
 
+.navLink {
+  display: revert;
+  margin-left: 25px;
+  margin-right: 25px;
+  color: #CE9C7B;
+  font-size: 1.25rem;
+}
+
 button{
   padding: 5px;
     border: 1px solid #D1FEE7;
-    background-color: #CE9C7B;
     color: #D1FEE7;
     display: inline;
     vertical-align: middle;
+}
+
+.purCart{
+  background-color: black
 }
 
 .search {
@@ -161,7 +172,6 @@ button{
 .register-section  {
   width: 213px;
   height: 36px;
-  background: url('http://i.imgur.com/fd8Lcso.png') no-repeat;
   margin: 30px auto;
   padding: 5px
 
@@ -179,7 +189,6 @@ button{
 .login-section{
   width: 213px;
   height: 36px;
-  background: url('http://i.imgur.com/fd8Lcso.png') no-repeat;
   margin: 30px auto;
   padding: 5px
 }

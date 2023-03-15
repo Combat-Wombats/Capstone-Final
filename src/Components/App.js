@@ -116,34 +116,36 @@ const App = () => {
         {
           auth.id ? (
             <div className='navBar'>
-            <h3>Welcome: {user.username}</h3>
-            <Link to="/" style={{ color: "white" }}>
+            
+            <Link className="navLink" to="/">
               Home
             </Link>
-            <Link to="/allProducts" style={{ color: "white" }}>
+            <Link className="navLink" to="/allProducts">
               {" "}
               All Products
             </Link>
-            <Link to="/carts" style={{ color: "white" }}>
+            <Link className="navLink" to="/carts">
               Cart ({cart.products?.length})
             </Link>
-            <button onClick={logout}>Logout {auth.username}</button>
+            <button className="navLink" onClick={logout}>Logout {auth.username}</button>
           </div>
         ) : (
           <>
             <div className="navBar">
-              <Link to="/login" style={{ color: "white" }}>
+            <div className="linkContainer">
+              <Link className="navLink" to="/login" >
                 Login
               </Link>
-              <Link to="/register" style={{ color: "white" }}>
+              <Link className="navLink" to="/register" >
                 {" "}
                 Register
               </Link>
-              <Link to="/allProducts" style={{ color: "white" }}>
+              <Link className="navLink" to="/allProducts" >
                 {" "}
                 All Products
               </Link>
               {/* <Link to='/cart'>Cart</Link> */}
+              </div>
             </div>
           </>
         )}
