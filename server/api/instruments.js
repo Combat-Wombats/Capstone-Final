@@ -5,7 +5,8 @@ const router = express.Router();
 const { getstrings } = require('../db/index');
 const { getProducts, getProductById } = require('../db/products');
 const { getCartByUserId, addProductToCart, createCart, deleteProductFromCart } = require('../db/cart')
-const {getUserByToken} = require("../db/User")
+const {getUserByToken, getAllUsers} = require("../db/User")
+
 
 // /api/instruments
 router.get('/', async (req, res, next) => {
@@ -97,5 +98,7 @@ router.post('/carts/:productId', async (req, res) => {
     const updatedCart = await getCartByUserId({ userId: user.id });
     res.send(updatedCart);
   });
+  
+
   
 module.exports = router;

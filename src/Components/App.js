@@ -12,8 +12,8 @@ import { Link, Routes, Route, useNavigate, useParams } from "react-router-dom";
 import AllProducts from "./AllProducts";
 import SingleProduct from "./SingleProduct";
 import Cart from "./Cart";
-//import sound from '/static/comwom.mp3'
-//import Sound from "react-sound"
+import Admin from "./Admin"
+
 
 const Search = ({ products }) => {
   const { term } = useParams();
@@ -38,7 +38,10 @@ const App = () => {
   const [categories, setCategories] = useState([]);
   const [product, setProduct] = useState([]);
   const [cart, setCart] = useState({});
+  const [users, setUsers] = useState([])
+  console.log(auth, 'this is auth')
 
+  // console.log(user, 'ths is ')
   useEffect(() => {
     const fetchData = async () => {
       const fetchProducts = await fetchAllProducts();
@@ -55,7 +58,7 @@ const App = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   const attemptLogin = () => {
     const token = window.localStorage.getItem("token");
@@ -70,8 +73,9 @@ const App = () => {
         .then((user) => {
           setAuth(user)
           fetch(`/api/instruments/carts/${user.id}`)
-          .then((response) => response.json())
-          .then((cart) => setCart(cart))});
+            .then((response) => response.json())
+            .then((cart) => setCart(cart))
+        });
 
     }
   };
@@ -111,64 +115,67 @@ const App = () => {
   return (
     <div>
       <div className="headerContainer">
-      <img src="static/logo.png"></img>
-      <h1 className="header">Combat Wombat Commerce</h1>
-      <nav className='main-nav' >
-        
-        {
-          auth.id ? (
-            <div className='navBar'>
-            
-            <Link className="navLink" to="/">
-              Home
-            </Link>
-            <Link className="navLink" to="/allProducts">
-              {" "}
-              All Products
-            </Link>
-            <Link className="navLink" to="/carts">
-              Cart ({cart.products?.length})
-            </Link>
-            <button className="navLink" onClick={logout}>Logout {auth.username}</button>
-          </div>
-        ) : (
-          <>
-            <div className="navBar">
-            <div className="linkContainer">
-              <Link className="navLink" to="/login" >
-                Login
-              </Link>
-              <Link className="navLink" to="/register" >
-                {" "}
-                Register
-              </Link>
-              <Link className="navLink" to="/allProducts" >
-                {" "}
-                All Products
-              </Link>
-              {/* <Link to='/cart'>Cart</Link> */}
+        <img src="static/logo.png"></img>
+        <h1 className="header">Combat Wombat Commerce</h1>
+        <nav className='main-nav' >
+
+          {
+            auth.id ? (
+              <div className='navBar'>
+                <h3>Welcome: {auth.username}</h3>
+                <div>
+                  <Link to="/" style={{ color: "white" }}>
+                    Home
+                  </Link>
+                  <Link to="/allProducts" style={{ color: "white" }}>
+                    {" "}
+                    All Products
+                  </Link>
+                  <Link to="/carts" style={{ color: "white" }}>
+                    Cart ({cart.products?.length})
+                  </Link>
+                  {auth.admin ? <Link to="/admin" style={{ color: "white" }}> Admin </Link> : null}
+                  <button onClick={logout}>Logout {auth.username}</button>
+                </div>
               </div>
-            </div>
-          </>
-        )}
-      </nav>
+
+            ) : (
+              <>
+                <div className="navBar">
+                  <Link to="/login" style={{ color: "white" }}>
+                    Login
+                  </Link>
+                  <Link to="/register" style={{ color: "white" }}>
+                    {" "}
+                    Register
+                  </Link>
+                  <Link to="/allProducts" style={{ color: "white" }}>
+                    {" "}
+                    All Products
+                  </Link>
+                  {/* <Link to='/cart'>Cart</Link> */}
+                </div>
+              </>
+            )}
+
+        </nav>
       </div>
-        <input 
-          placeholder='Search for Products' 
-          className='search'
-          onChange = {
-            (ev)=> {
+      <input
+        placeholder='Search for Products'
+        className='search'
+        onChange={
+          (ev) => {
+            navigate(`/allProducts/search/${ev.target.value}`);
+            if (ev.target.value === "") {
+              navigate(`/allProducts`)
+            } else {
               navigate(`/allProducts/search/${ev.target.value}`);
-              if(ev.target.value === ""){
-                navigate(`/allProducts`)
-              } else {
-                navigate(`/allProducts/search/${ev.target.value}`);
-              }
             }
-            
           }
-          />
-          <button type="submit"><i className="material-icons">search</i></button>
+
+        }
+      />
+      <button type="submit"><i className="material-icons">search</i></button>
       <Routes>
         {auth.id ? (
           <>
@@ -190,13 +197,18 @@ const App = () => {
             <Route
               path="/allProducts/:productId"
               element={
-                <SingleProduct product={product} setProduct={setProduct} setCart={setCart} auth= {auth} />
+                <SingleProduct product={product} setProduct={setProduct} setCart={setCart} auth={auth} />
               }
             />
             <Route
               path="/carts"
               element={<Cart cart={cart} setCart={setCart} />}
             />
+            <Route
+              path="/admin"
+              element={<Admin users={users} setUsers={setUsers} />}
+            />
+
           </>
         ) : (
           <>
@@ -244,8 +256,11 @@ const App = () => {
           </>
         )}
       </Routes>
+
     </div>
+
   );
+
 };
 
 export default App;

@@ -17,12 +17,13 @@ app.use('/api/instruments', require('./api/instruments'));
 
 app.use("/api/categories", require("./api/categories"))
 
+app.use("/api/users", require("./api/users"))
 
 //app.use('/api/register',require('./api/users'))
 
 
 
-// app.use('/api/users',require('./api/users'))
+app.use('/api/users',require('./api/users'))
 
 
 const apiRouter = require('./api');

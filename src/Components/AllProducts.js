@@ -52,7 +52,7 @@ const AllProducts = props => {
       //end of lex */}
         {products.map(product => {
           return (
-            <div key={product.id} className={`product ${product.categoryId}`} style ={{
+            <div key={product.id} className={`product ${product.categoryId}`}  style ={{
               border: "1px solid #ccc",
               borderRadius: "5px",
               padding: "10px",
