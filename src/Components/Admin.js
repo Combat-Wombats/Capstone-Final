@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { authenticate } from '../../server/db';
 import { fetchAllUsers } from '../api';
 
 const Admin = () => {
@@ -9,7 +8,7 @@ const Admin = () => {
         () => {
             const fetchUsers = async () => {
                 const data = await fetchAllUsers()
-                setUsers(data);
+                 setUsers(data);
             };
             fetchUsers();
         }, []
@@ -19,12 +18,12 @@ const Admin = () => {
     return (
         <div>
             <h1> Admin Page </h1>
+            <h2> List of users: </h2>
             {users.map(user => {
                 return (
                     <div key = {user.id}>
                         Username: {user.username}
                         Password: {user.password}
-                        Admin: {user.admin}
                     </div>
                 )
             })}
