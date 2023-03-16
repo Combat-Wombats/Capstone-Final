@@ -13,6 +13,7 @@ import { Link, Routes, Route, useNavigate, useParams } from "react-router-dom";
 import AllProducts from "./AllProducts";
 import SingleProduct from "./SingleProduct";
 import Cart from "./Cart";
+import Admin from "./Admin"
 
 const Search = ({ products }) => {
   const { term } = useParams();
@@ -116,7 +117,7 @@ const App = () => {
         {
           auth.id ? (
             <div className='navBar'>
-            <h3>Welcome: {user.username}</h3>
+            <h3>Welcome: {auth.username}</h3>
             <Link to="/" style={{ color: "white" }}>
               Home
             </Link>
@@ -127,6 +128,7 @@ const App = () => {
             <Link to="/carts" style={{ color: "white" }}>
               Cart ({cart.products?.length})
             </Link>
+            {/* {auth.admin ? <Link to = "/admin" style = {{color: "white"}}> Admin </Link> : null } */}
             <button onClick={logout}>Logout {auth.username}</button>
           </div>
         ) : (

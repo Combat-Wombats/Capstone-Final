@@ -122,6 +122,16 @@ const fetchMyCart = async (userId) => {
   }
 };
 
+const fetchAllUsers = async () => {
+  try {
+    const response = await fetch ('/api/users');
+    const result = await response.json()
+    return result 
+  } catch (error) {
+    
+  }
+}
+
 module.exports = {
   fetchRegister,
   //fetchLogin,
@@ -130,5 +140,6 @@ module.exports = {
   fetchSingleProduct,
   fetchAllCategories,
   fetchAddToCart,
-  fetchMyCart
+  fetchMyCart,
+  fetchAllUsers
 };
