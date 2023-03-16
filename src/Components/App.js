@@ -59,11 +59,12 @@ const App = () => {
   }, []);
 
   useEffect(() => { }, []);
+  const navigate = useNavigate();
 
   const attemptLogin = () => {
     const token = window.localStorage.getItem("token");
     if (token) {
-      fetch("/api/auth", {
+      return fetch("/api/auth", {
         method: "GET",
         headers: {
           authorization: token,
@@ -98,11 +99,13 @@ const App = () => {
       },
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then(async(data) => {
         if (data.token) {
           console.log("data nakon logovanja", data);
           window.localStorage.setItem("token", data.token);
-          attemptLogin();
+          await attemptLogin();
+          console.log('I logged in with login');
+          navigate('/allProducts');
         } else {
           console.log(data);
         }
@@ -111,7 +114,6 @@ const App = () => {
 
 
 
-  const navigate = useNavigate();
   return (
     <div>
       <div className="headerContainer">
@@ -187,6 +189,12 @@ const App = () => {
               }
             />
             <Route
+              path="/allProducts/byCategory/:id"
+              element={
+                <AllProducts products={products} setProducts={setProducts} categories={categories} />
+              }
+            />
+            <Route
               path="/allProducts/search/:term"
               element={<Search products={products} />}
             />
@@ -226,7 +234,7 @@ const App = () => {
             <Route
               path="/register"
               element={
-                <Register setUser={setUser} setToken={setToken} token={token} />
+                <Register attemptLogin={ attemptLogin } setUser={setUser} setToken={setToken} token={token} />
               }
             />
             <Route
@@ -237,6 +245,12 @@ const App = () => {
                   products={products}
                   setProducts={setProducts}
                 />
+              }
+            />
+            <Route
+              path="/allProducts/byCategory/:id"
+              element={
+                <AllProducts products={products} setProducts={setProducts} categories={categories} />
               }
             />
             <Route

@@ -1,55 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams} from 'react-router-dom';
 const AllProducts = props => {
-  const products = props.products;
-    const categories = props.categories;
-    const all = [];
+  const categories = props.categories;
+  const { id } = useParams();
+  const products = props.products.filter(product => !id || id*1 === product.categoryId);
+  console.log(id);
     
-    function handleClick(caller){
-        //console.log(caller.target)
-        const productList = document.getElementsByClassName("product")
-        const productArray=Array.from(productList)
-        const categoryId= caller.target.classList[0]
-        const products = "product " + categoryId
-        productArray.forEach((el)=>{
-            el.style.display="none";
-            if (products === el.className){
-              el.style.display="flex"
-            }
-        }
-        )
-      }
     
-
-
 
 
   return (
     <div className="all-products-container">
-      <h2 className="title"> Our Products</h2>
+      <h2 className="title"> Our Products ({ products.length })</h2>
 
       <div className = "categorical">
                 {
                   categories.map((category)=>{
-                    return <div className="individualCategory" onClick={handleClick}>
+                    return <div className="individualCategory">
 
-                    <h3 className={category.id}> {category.category} </h3>
+                    <h3 className={ id*1 === category.id ? 'selected': '' }>
+                      <Link to={id*1 === category.id ? '/allProducts': `/allProducts/byCategory/${category.id}`}>{category.category}</Link></h3>
                     </div>
                   })
                 }
                     </div>
       <div className="products-container">
-      {/* //lex
-      {
-                all.map((category)=>{
-                    return <div key={all.id} onClick={handleClick}>
-                        <h3 className={category.id}> {category.category} </h3>
-                        
-                        </div>
-                })
-               
-            }
-      //end of lex */}
         {products.map(product => {
           return (
             <div key={product.id} className={`product ${product.categoryId}`}  style ={{

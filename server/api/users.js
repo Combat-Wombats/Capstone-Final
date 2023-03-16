@@ -23,6 +23,7 @@ userRouter.post('/register', async(req, res, next) => {
     const {username, password} = req.body;
     console.log('username, pass', username, password)
     try {
+      /*
         const users = await getUserByUsername(username);
         console.log('this is users', users)
         if(users){
@@ -31,12 +32,13 @@ userRouter.post('/register', async(req, res, next) => {
         else if(password.length < 8){
             res.status(500).send({name: " message", message: `Password is too short`, error: "Failed"})
         } else{
+        */
             const user = await createUser({username, password});
             console.log('this is user', user)
             const token = jwt.sign({id: user.id, username: user.username, email: user.email}, process.env.JWT)
             res.send({message: "thank you for signing up", token, user})
-        }
-        console.log(users)
+        //}
+        //console.log(users)
     } catch ({name, message, error}) {
         next({name, message, error})
     }
