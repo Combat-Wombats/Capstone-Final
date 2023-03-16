@@ -8,12 +8,12 @@ import {
   fetchSingleProduct,
   fetchAllCategories,
 } from "../api";
-
 import { Link, Routes, Route, useNavigate, useParams } from "react-router-dom";
 import AllProducts from "./AllProducts";
 import SingleProduct from "./SingleProduct";
 import Cart from "./Cart";
 import Admin from "./Admin"
+
 
 const Search = ({ products }) => {
   const { term } = useParams();
@@ -109,6 +109,8 @@ const App = () => {
       });
   };
 
+
+
   const navigate = useNavigate();
   return (
     <div>
@@ -116,7 +118,6 @@ const App = () => {
         <img src="static/logo.png"></img>
         <h1 className="header">Combat Wombat Commerce</h1>
         <nav className='main-nav' >
-
 
           {
             auth.id ? (
@@ -156,7 +157,6 @@ const App = () => {
                 </div>
               </>
             )}
-
 
         </nav>
       </div>

@@ -92,7 +92,7 @@ const Cart = ({ cart, setCart }) => {
           );
         })}
       </ul>
-      <button
+      <button className="purCart"
         onClick={async () => {
           const newCart = await purchaseCart();
         }}
