@@ -1,10 +1,10 @@
 // import jwt from "jsonwebtoken";
 // import jwt_decode from "jwt-decode";
 
-const url = "https://dc3aa463d8c9449cbae8b9dd19642048.vfs.cloud9.us-east-1.amazonaws.com:8080/";
+//const url = "https://dc3aa463d8c9449cbae8b9dd19642048.vfs.cloud9.us-east-1.amazonaws.com:8080/";
+const url = '';
 
 const fetchRegister = async (username, password) => {
-  try {
     const response = await fetch(`/api/users/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -13,11 +13,12 @@ const fetchRegister = async (username, password) => {
         password: password,
       }),
     });
+    if(!response.ok){
+      const error = await response.json();
+      throw error;
+    }
     const result = await response.json();
     return result;
-  } catch (error) {
-    console.error(error);
-  }
 };
 
 
