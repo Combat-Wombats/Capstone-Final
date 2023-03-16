@@ -1,7 +1,7 @@
 // import jwt from "jsonwebtoken";
 // import jwt_decode from "jwt-decode";
 
-const url = "https://dc3aa463d8c9449cbae8b9dd19642048.vfs.cloud9.us-east-1.amazonaws.com:8080/";
+const url = "https://localhost:3000/";
 
 const fetchRegister = async (username, password) => {
   try {
