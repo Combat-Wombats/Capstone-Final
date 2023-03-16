@@ -1,4 +1,4 @@
-const drums=()=>{
+const drums=
   [
     {
       name: "Tama Club-JAM 4-Piece Shell Pack Galaxy Silver",
@@ -55,6 +55,7 @@ const drums=()=>{
     used: "No",
     shipping: "Yes"
 
-  }
-  ]
-}
+    }
+]
+
+module.exports = { drums }

@@ -1,4 +1,4 @@
-const accesories= ()=> {
+const accessories= 
   [
     {
       name:"Musician's Gear Deluxe SGS Solid-Guitar-Style Hardshell Case Black",
@@ -82,4 +82,5 @@ const accesories= ()=> {
   shipping: "Yes"
 },
   ]
-}
+
+module.exports = {accessories}

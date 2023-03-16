@@ -10,6 +10,8 @@ module.exports = router;
 router.post('/', async(req, res, next)=> {
   try {
     const token = await authenticate(req.body);
+    
+
     res.send({ token });
   }
   catch(ex){
@@ -17,7 +19,9 @@ router.post('/', async(req, res, next)=> {
   }
 });
 
+
 router.get('/', async(req, res, next)=> {
+  // auto login when app started
   try {
     res.send(await getUserByToken(req.headers.authorization)); 
   }

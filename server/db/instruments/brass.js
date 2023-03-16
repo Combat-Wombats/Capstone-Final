@@ -1,4 +1,4 @@
-const brass =()=>{
+const brass =
   [
     {
       name: "Etude ETR-100 Series Student Bb Trumpet Lacquer",
@@ -56,6 +56,6 @@ const brass =()=>{
       shipping: "Yes"
     }
   ]
-}
+module.exports = { brass}
 
 
