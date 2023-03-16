@@ -28,11 +28,7 @@ const getUserByToken = async(token) => {
   }
   const user = response.rows[0];
   delete user.password;
-<<<<<<< Updated upstream
   return user; 
-=======
-  return user
->>>>>>> Stashed changes
 }
 
 const authenticate = async({ username, password }) => {
@@ -66,7 +62,6 @@ const getUserByUsername = async(username) => {
   }
 }
 
-<<<<<<< Updated upstream
 const getAllUsers = async () => {
   try {
     const SQL = `
@@ -75,33 +70,6 @@ const getAllUsers = async () => {
     return response.rows;
   } catch (error) {
     console.log(error)
-=======
-const authenticateAdmin = async({ username, password, admin }) => {
-  const SQL = `
-    SELECT id
-    FROM users
-    WHERE username = $1 , password = $2 and admin = true
-  `;
-  const response = await client.query(SQL, [ username, password, admin]);
-  if(!response.rows.length){
-    const error = Error('not authorized');
-    error.status = 401;
-    throw error;
-  }
-  console.log('this',response.rows)
-  return jwt.sign({ id: response.rows[0].id }, JWT);
-}
-  
-const getAllUsers = async () => {
-  try {
-    const SQL = `
-    SELECT * FROM users
-    `;
-    const response = await client.query(SQL);
-    return response.rows;
-  } catch (error) {
-    console.log(error);
->>>>>>> Stashed changes
   }
 }
 
@@ -109,14 +77,7 @@ module.exports = {
   createUser,
   authenticate,
   getUserByToken,
-<<<<<<< Updated upstream
   getUserByUsername,
   getAllUsers
-=======
-  getUserByUsername, 
-  authenticateAdmin,
-  getAllUsers
- 
->>>>>>> Stashed changes
 };
 
