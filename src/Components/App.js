@@ -8,11 +8,12 @@ import {
   fetchSingleProduct,
   fetchAllCategories,
 } from "../api";
-
 import { Link, Routes, Route, useNavigate, useParams } from "react-router-dom";
 import AllProducts from "./AllProducts";
 import SingleProduct from "./SingleProduct";
 import Cart from "./Cart";
+//import sound from '/static/comwom.mp3'
+//import Sound from "react-sound"
 
 const Search = ({ products }) => {
   const { term } = useParams();
@@ -104,6 +105,8 @@ const App = () => {
       });
   };
 
+
+
   const navigate = useNavigate();
   return (
     <div>
@@ -111,39 +114,40 @@ const App = () => {
       <img src="static/logo.png"></img>
       <h1 className="header">Combat Wombat Commerce</h1>
       <nav className='main-nav' >
-      
         
         {
           auth.id ? (
             <div className='navBar'>
-            <h3>Welcome: {user.username}</h3>
-            <Link to="/" style={{ color: "white" }}>
+            
+            <Link className="navLink" to="/">
               Home
             </Link>
-            <Link to="/allProducts" style={{ color: "white" }}>
+            <Link className="navLink" to="/allProducts">
               {" "}
               All Products
             </Link>
-            <Link to="/carts" style={{ color: "white" }}>
+            <Link className="navLink" to="/carts">
               Cart ({cart.products?.length})
             </Link>
-            <button onClick={logout}>Logout {auth.username}</button>
+            <button className="navLink" onClick={logout}>Logout {auth.username}</button>
           </div>
         ) : (
           <>
             <div className="navBar">
-              <Link to="/login" style={{ color: "white" }}>
+            <div className="linkContainer">
+              <Link className="navLink" to="/login" >
                 Login
               </Link>
-              <Link to="/register" style={{ color: "white" }}>
+              <Link className="navLink" to="/register" >
                 {" "}
                 Register
               </Link>
-              <Link to="/allProducts" style={{ color: "white" }}>
+              <Link className="navLink" to="/allProducts" >
                 {" "}
                 All Products
               </Link>
               {/* <Link to='/cart'>Cart</Link> */}
+              </div>
             </div>
           </>
         )}
