@@ -53,7 +53,7 @@ const AllProducts = props => {
         {products.map(product => {
           return (
             <div key={product.id} className={`product ${product.categoryId}`}  style ={{
-              border: "1px solid #ccc",
+              border: "3px solid #ccc",
               borderRadius: "5px",
               padding: "10px",
               display: "flex",
@@ -62,7 +62,7 @@ const AllProducts = props => {
             }}>
               <img className='productPhotos' src= {product.img}/>
               <h3 className="product-name">
-                {' '}Name: {product.name}{' '}
+                {' '} {product.name}{' '}
               </h3>
               {/* <p> Description: {product.description}</p>
                         <p> Features: {product.features} </p> */}

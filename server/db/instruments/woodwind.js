@@ -4,11 +4,12 @@ const woodwind =
             name: "Yamaha  YTS-62III Professional Tenor Saxophone",
             description: " One of the best-made tenors available, the YTS-62III features fully ribbed construction, yet its weight is comfortable and well balanced. It is hand-adjusted, and the two-piece bell, body and neck and are all hand-hammered to shape. Its new engraving design is likewise done by hand, instilling a uniqueness in each instrument. Multiple key posts are integrated into a single plate, which lends the horn moderate resistance while delivering a solid core with deep tone color. Hard steel springs offer a fast, sensitive key response. It has a Front F key along with a high F# key and an adjustable thumb rest.",
             features: "",
-            price: "",
+            price: "$3,797.99",
             location: "Phoenix",
             willDeliver: "yes",
             used: "no",
-            shipping: "yes"
+            shipping: "yes",
+            img: "https://media.musiciansfriend.com/is/image/MMGS7/YTS-62III-Professional-Tenor-Saxophone-Lacquered/H93187000001000-00-500x500.jpg"
 
         },
         {
@@ -20,7 +21,8 @@ const woodwind =
             location: "Honululu",
             willDeliver: "yes",
             used: 'yes',
-            shipping: "yes"
+            shipping: "yes",
+            img: "https://media.musiciansfriend.com/is/image/MMGS7/EAS-100-Student-Alto-Saxophone-Lacquer/463675000420000-00-500x500.jpg"
         },
         {
             name: "  Yamaha YCL-255 Standard Bb Clarinet Bb Clarinet",
@@ -31,17 +33,19 @@ const woodwind =
             location: "Columbus",
             willDeliver: "yes",
             used: "No ",
-            shipping: "yes"
+            shipping: "yes",
+            img: "https://cdn.shopify.com/s/files/1/0268/0972/9087/products/422c9e3c-fc46-4d63-bfb5-a7242e4ebb8d_9cbd5810-8df0-4edb-ada4-b4e9c5881f56_1000x1000.png?v=1678913840"
         },
         {
             name: "Etude Model EFL-100 Student Flute Closed Hole, Offset G, C Foot",
             description: " The Etude EFL-100 flute is a quality instrument to fit any budget. It features a silver-plated head, body and foot for beauty as well as durability. The C foot and offset-G key help make the instrument easier to hold and play for those with smaller haEtude believes that price should not be a barrier to experiencing the growth and joy that comes from making music. That's why Etude offers you five of the most popular woodwind and brass instruments at an incredible price: flute, clarinet, alto sax, trumpet and trombone. And no matter which you choose, you get a great design and outstanding construction that will give you years of musical enjoyment. See for yourself.  ",
             features: "",
-            price: "",
+            price: "$269.99",
             location: "Milwaukee",
             willDeliver: "yes",
             used: "no",
-            shipping: "yes"
+            shipping: "yes",
+            img: "https://media.guitarcenter.com/is/image/MMGS7/463673000232000-00-720x720.jpg"
         },
         {
             name: "Fox Renard Model 240 Bassoon",
@@ -65,7 +69,8 @@ const woodwind =
             location: "Detroit",
             willDeliver: "yes",
             used: "no",
-            shipping: "yes"
+            shipping: "yes",
+            img: "https://media.musiciansfriend.com/is/image/MMGS7/Renard-Model-240-Bassoon/462096000000000-00-500x500.jpg"
             
         },
         {
@@ -77,7 +82,8 @@ const woodwind =
             location: "Tucson",
             willDeliver: "yes",
             used: "no",
-            shipping: "yes"
+            shipping: "yes",
+            img: "https://media.musiciansfriend.com/is/image/MMGS7/GPC-300-Piccolo/L56990000000000-00-500x500.jpg"
 
         }
 
