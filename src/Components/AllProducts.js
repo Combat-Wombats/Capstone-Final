@@ -4,7 +4,7 @@ const AllProducts = props => {
   const categories = props.categories;
   const { id } = useParams();
   const products = props.products.filter(product => !id || id*1 === product.categoryId);
-  console.log(id);
+
     
     
 

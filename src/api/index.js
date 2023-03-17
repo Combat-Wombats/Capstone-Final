@@ -1,10 +1,6 @@
 // import jwt from "jsonwebtoken";
 // import jwt_decode from "jwt-decode";
 
-const url = "https://localhost:3000/";
-
-
-
 const fetchRegister = async (username, password) => {
     const response = await fetch(`/api/users/register`, {
       method: "POST",
@@ -64,7 +60,7 @@ const fetchSingleProduct = async (productId) => {
 
 const fetchAllCategories = async () => {
   try {
-    const response = await fetch(`${url}/api/categories`);
+    const response = await fetch(`/api/categories`);
     const result = await response.json();
     return result;
   } catch (error) {
@@ -75,7 +71,7 @@ const fetchAllCategories = async () => {
 const fetchAddToCart = async (productId, data) => {
   try {
     const token = window.localStorage.getItem("token");
-    const response = await fetch(`${url}/api/instruments/carts/${productId}`, {
+    const response = await fetch(`/api/instruments/carts/${productId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -97,7 +93,7 @@ const fetchMyCart = async (userId) => {
   // const decodedToken = jwt_decode(token);
   // const userId = decodedToken.id; // njega deokdiramo iz tokena u tokenu je spakovan pod imenom id
   try {
-    const response = await fetch(`${url}/api/instruments/carts/${userId}`);
+    const response = await fetch(`/api/instruments/carts/${userId}`);
     const result = await response.json();
     return result;
   } catch (error) {
