@@ -1,7 +1,7 @@
 // import jwt from "jsonwebtoken";
 // import jwt_decode from "jwt-decode";
 
-const url = "https://dc3aa463d8c9449cbae8b9dd19642048.vfs.cloud9.us-east-1.amazonaws.com:8080/";
+// const url = "https://dc3aa463d8c9449cbae8b9dd19642048.vfs.cloud9.us-east-1.amazonaws.com:8080/";
 
 const fetchRegister = async (username, password) => {
   try {
@@ -62,7 +62,7 @@ const fetchSingleProduct = async (productId) => {
 
 const fetchAllCategories = async () => {
   try {
-    const response = await fetch(`${url}/api/categories`);
+    const response = await fetch(`/api/categories`);
     const result = await response.json();
     return result;
   } catch (error) {

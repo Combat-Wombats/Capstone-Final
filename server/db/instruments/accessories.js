@@ -8,7 +8,8 @@ const accessories=
       location: "Richmond",
       willDeliver: "Yes",
       used: "No",
-      shipping: "Yes"
+      shipping: "Yes",
+      img: `https://media.musiciansfriend.com/is/image/MMGS7/Deluxe-SGS-Solid-Guitar-Style-Hardshell-Case-Black/545175000001000-00-500x500.jpg`
     },
     {
       name: "Musician's Gear MGMEG Molded ABS Electric Guitar Case",
@@ -18,7 +19,8 @@ const accessories=
       location: "Seatle",
       willDeliver: "Yes",
       used: "No",
-      shipping: "Yes"
+      shipping: "Yes",
+      img: "https://media.musiciansfriend.com/is/image/MMGS7/MGMEG-Molded-ABS-Electric-Guitar-Case/H86557000000000-00-500x500.jpg"
     },
     {
       name: "Ernie Ball 2834 Super Slinky Roundwound Bass Strings",
@@ -28,7 +30,8 @@ const accessories=
       location: "New York",
       willDeliver: "Yes",
       used: "No",
-      shipping: "Yes"
+      shipping: "Yes",
+      img: "https://media.musiciansfriend.com/is/image/MMGS7/2223-Nickel-Super-Slinky-Guitar-Strings--Buy-10-Get-2-Free/101771000000000-00-500x500.jpg"
     },
     {
       name: "Rotosound RN 66LD Nickel Swing Bass Strings",
@@ -38,7 +41,8 @@ const accessories=
       location: "New York",
       willDeliver: "Yes",
       used: "No",
-      shipping: "Yes"
+      shipping: "Yes",
+      img: "https://media.musiciansfriend.com/is/image/MMGS7/102881000000000-00-2000x2000.jpg"
     },
     {
       name: "Protec Contoured Tenor PRO PAC Saxophone Case Black",
@@ -48,7 +52,8 @@ const accessories=
       location: "New York",
       willDeliver: "Yes",
       used: "No",
-      shipping: "Yes"
+      shipping: "Yes",
+      img: "https://media.musiciansfriend.com/is/image/MMGS7/Contoured-Tenor-PRO-PAC-Saxophone-Case-Black/541086000001000-00-500x500.jpg"
     },
     {
       name: "CHAUVET DJ CH-06 Lightweight Lighting Stand With T-Bar",
@@ -59,7 +64,8 @@ const accessories=
       location: "New York",
       willDeliver: "Yes",
       used: "No",
-      shipping: "Yes"
+      shipping: "Yes",
+      img: "https://media.musiciansfriend.com/is/image/MMGS7/CH-06-Lightweight-Lighting-Stand-With-T-Bar/H90527000000000-00-500x500.jpg"
     },
 {
   name: "Manhasset M48 Carton of 6 Music Stands",
@@ -69,7 +75,8 @@ const accessories=
   location: "Denver",
   willDeliver: "Yes",
   used: "No",
-  shipping: "Yes"
+  shipping: "Yes",
+  img: "https://media.musiciansfriend.com/is/image/MMGS7/M48-Carton-of-6-Music-Stands/450188000000000-00-500x500.jpg"
 },
 {
   name: "Sound Percussion Labs Velocity VLHW890-4 4-Piece Hardware Pack",
@@ -79,7 +86,8 @@ const accessories=
   location: "Denver",
   willDeliver: "Yes",
   used: "No",
-  shipping: "Yes"
+  shipping: "Yes",
+  img: "https://media.musiciansfriend.com/is/image/MMGS7/Velocity-VLHW890-4-4-Piece-Hardware-Pack/L77721000000000-00-500x500.jpg"
 },
   ]
 
