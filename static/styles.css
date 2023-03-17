@@ -4,10 +4,25 @@ body {
 
 form {
   display: flex;
-  flex-direction: column;
-  background-color: #CE9C7B
+  flex-direction: column; 
 }
 
+input{
+  padding: 5px;
+}
+
+.registerBtn {
+  background-color: #777;
+  font-size: medium;
+}
+
+.loginBtn{
+  background-color: #777;
+  font-size: medium;
+}
+.registerLink{
+  color: white;
+}
 html {
   background-color: #CE9C7B
 }
@@ -169,13 +184,55 @@ button{
   border-radius: 5px;
   text-align: center;
 }
-.register-section  {
-  width: 213px;
-  height: 36px;
-  margin: 30px auto;
-  padding: 5px
-
+.register {
+  background-image: url("https://www.funfactsabout.com/wp-content/uploads/2022/08/musical-instrument-facts.jpg");
+  width: 100%;
+  height: 100%;
+ 
+ 
 }
+
+.login {
+  background-image: url("https://mcdn.wallpapersafari.com/medium/7/99/7ydf4k.jpg");
+  width: 100%;
+  height: 100%;
+  
+ 
+}
+
+.registerComp {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 400px;
+  padding: 20px;
+  text-align: center;
+}
+
+.loginComp{
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position:relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 400px;
+  padding: 20px;
+  text-align: center;
+}
+
+
 
 .material-icons{
   background-color:#CE9C7B;
