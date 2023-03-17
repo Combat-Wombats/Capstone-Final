@@ -58,8 +58,6 @@ const SingleProduct = ({setCart, auth}) => {
       <div>
 
         <button className="add-to-cart" onClick={addToCartFe}>
-
-          
             {/* to="/carts"
             style={{
               textDecoration: 'none',
@@ -68,11 +66,7 @@ const SingleProduct = ({setCart, auth}) => {
             }} */}
           
             Add to Cart
-         
         </button>
-      </div>
-
-      <div>
         <button className="continue-shopping-button">
           <Link
             to="/allProducts"

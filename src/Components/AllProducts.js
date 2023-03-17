@@ -60,6 +60,7 @@ const AllProducts = props => {
               flexDirection: "column",
               justifyContent: "space-between"  
             }}>
+              <img className='productPhotos' src= {product.img}/>
               <h3 className="product-name">
                 {' '}Name: {product.name}{' '}
               </h3>
@@ -73,7 +74,7 @@ const AllProducts = props => {
                         <p> Used ? {product.used} </p>
                         <p> Shipping ? {product.shipping} </p> */}
                         {/* <p> category: {product.categoryId} </p> */}
-              {product.img}
+              
               <Link
                 to={`/allProducts/${product.id}`}
                 className="view-details-button"
