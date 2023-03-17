@@ -1,8 +1,6 @@
-
 const strings =  
     [
-        {
-            
+        { 
             name: "Fender Player Tex-Mex Stratocaster Limited-Edition Electric Guitar Sonic Blue",
             description: " The limited-edition Fender Player Tex-Mex Stratocaster features a classic sound—bell-like high end, punchy mids and robust low end, combined with crystal-clear articulation. It's ready to serve your musical vision, it’s versatile enough to handle any style of music and it’s the perfect platform for creating your own sound. The power trio of Tex-Mex single-coil pickups are crisp and articulate, giving you that authentic Fender tone with a modern edge. The modern C-shaped maple neck's comfortable contours and smooth finish are ideal for almost any playing style. The updated two-point tremolo design has smoother travel for enhanced playing feel while simultaneously giving you rock-solid tuning stability since there’s less friction against the posts. Other features include master volume and tone controls, a five-way pickup switch, three-ply pickguard, synthetic bone nut, dual-wing string tree, sealed tuning machines and four-bolt 'F'- stamped neck plate that marks this instrument as the real deal—as Fender as it gets. Own your tone and create something new with the Player Stratocaster",
             features: "Alder body" +
@@ -15,7 +13,6 @@ const strings =
             willDeliver: "yes",
             used: "No",
             shipping: "yes"
-
         },
         {
             name: "  PRS Singlecut McCarty 594 Electric Guitar Black Gold Sunburst ",

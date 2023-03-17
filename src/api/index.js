@@ -1,9 +1,8 @@
 // import jwt from "jsonwebtoken";
 // import jwt_decode from "jwt-decode";
 
-const url = "https://localhost:3000/";
-
-
+// const url = "https://localhost:3000/";
+const url = "";
 
 const fetchRegister = async (username, password) => {
     const response = await fetch(`/api/users/register`, {
@@ -91,11 +90,6 @@ const fetchAddToCart = async (productId, data) => {
 };
 
 const fetchMyCart = async (userId) => {
-
-  // const token = window.localStorage.getItem("token");
-  // const decodedToken = jwt.decode(token);
-  // const decodedToken = jwt_decode(token);
-  // const userId = decodedToken.id; // njega deokdiramo iz tokena u tokenu je spakovan pod imenom id
   try {
     const response = await fetch(`${url}/api/instruments/carts/${userId}`);
     const result = await response.json();
@@ -117,7 +111,6 @@ const fetchAllUsers = async () => {
 
 module.exports = {
   fetchRegister,
-  //fetchLogin,
   fetchUser,
   fetchAllProducts,
   fetchSingleProduct,

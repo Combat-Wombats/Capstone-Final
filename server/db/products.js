@@ -1,8 +1,5 @@
 const client = require('./client');
 
-//const jwt = require('jsonwebtoken');
-//const JWT = process.env.JWT;
-
 const createProducts = async ({
   name,
   description,
@@ -61,9 +58,6 @@ try {
   
 }
 }
-
-
-
 
 const getProductById = async id => {
   try {

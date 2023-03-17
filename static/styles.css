@@ -19,8 +19,45 @@ form > * {
 nav {
   background-color:indigo;
   padding: 10px
-  
-
+}
+.background-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.background{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+#text1{
+  color: red;
+  font-family:Arial, Helvetica, sans-serif ;
+  font-size: 20px;
+  position: absolute;
+  text-align: center;
+  top: 75%;
+  left: 50%;
+}
+#text2{
+  font-weight: bold;
+  position: absolute;
+  text-align: center;
+  top: 80%;
+  left: 45%;
+}
+#text3{
+  position: absolute;
+  text-align: center;
+  top: 88%;
+  left: 35%;
+}
+.link-to-products{
+  position: absolute;
+  text-align: center;
+  top: 100%;
+  left: 50%;
 }
 
 .headerContainer{
@@ -204,3 +241,49 @@ button{
     margin-bottom: 20px;
   }
 }
+.footer-container{
+  position: relative;
+  bottom: 10px;
+  margin-top: 5%;
+}
+footer {
+  display: flex;
+  flex-direction: row;
+  background: #D1FEE7;
+  padding: 1rem;
+  font-family: dosis;
+  justify-content: center;
+  position: relative;
+}
+footer section {
+  margin-right: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-direction: column;
+}
+footer :last-of-type a{
+  margin-right: none;
+}
+
+footer h2{
+  display:flex;
+  justify-content: space-between;
+  color: black;
+  border-bottom: 1rem;
+  padding-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
+  font-size: 18px;
+  letter-spacing: 0.3em;
+  text-decoration: underline;
+}
+footer a {
+  color: black;
+  text-decoration: none;
+  font-style: bold;
+  margin-bottom: 1rem;
+  font-size: 8px;
+  padding: 0 0.3em;
+  margin:0.3em;
+}
+
