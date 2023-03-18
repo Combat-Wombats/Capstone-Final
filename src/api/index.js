@@ -73,7 +73,7 @@ const fetchAllCategories = async () => {
 const fetchAddToCart = async (productId, data) => {
   try {
     const token = window.localStorage.getItem("token");
-    const response = await fetch(`${url}/api/instruments/carts/${productId}`, {
+    const response = await fetch(`/api/instruments/carts/${productId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -95,7 +95,7 @@ const fetchMyCart = async (userId) => {
   // const decodedToken = jwt_decode(token);
   // const userId = decodedToken.id; // njega deokdiramo iz tokena u tokenu je spakovan pod imenom id
   try {
-    const response = await fetch(`${url}/api/instruments/carts/${userId}`);
+    const response = await fetch(`/api/instruments/carts/${userId}`);
     const result = await response.json();
     return result;
   } catch (error) {
