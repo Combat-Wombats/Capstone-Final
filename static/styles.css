@@ -81,15 +81,19 @@ img{
 }
 
 button{
-  padding: 5px;
-    border: 1px solid #D1FEE7;
-    color: #D1FEE7;
-    display: inline;
-    vertical-align: middle;
+  background-color:  #D1FEE7;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
 }
+button:hover{
+  background-color: rgb(164, 226, 164);
 
+}
 .purCart{
-  background-color: black
+  background-color:  #D1FEE7;
+  color: black
 }
 
 .search {
@@ -118,6 +122,8 @@ button{
   grid-gap: 20px;
 }
 
+
+
 .categorical {
   display:flex; 
   justify-content:center;
@@ -138,6 +144,7 @@ button{
 .individualCategory:hover {
   background-color: rgb(164, 226, 164);;
   cursor:pointer;
+  transform: scale(1.5)
 }
 
 .single-product {
@@ -148,6 +155,7 @@ button{
   flex-direction: column;
   justify-content: space-between;
 }
+
 
 
 .product-name {
@@ -174,6 +182,19 @@ button{
   background-color: rgb(164, 226, 164);
 }
 
+.deleteUserBtn {
+  background-color:  #D1FEE7;
+  color: black;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+.deleteUserBtn:hover {
+  background-color: rgb(164, 226, 164);
+ 
+}
 .singleProdBtns{
   display: flex;
   justify-content:space-around
@@ -251,6 +272,11 @@ button{
   width:100%;
   height: 50%;
 }
+
+.productPhotos:hover{
+  transform: scale(1.25)
+}
+
 .material-icons{
   background-color:#CE9C7B;
   border-color: #CE9C7B;
@@ -286,6 +312,14 @@ button{
   display: flex;
   flex-direction: column;
   margin: 20px;
+}
+
+.adminPage {
+  margin-left: 30px;;
+}
+.userInfo{
+  margin-bottom: 5px;
+ border-bottom: 5px solid gray;
 }
 
 .singleProdDetails{

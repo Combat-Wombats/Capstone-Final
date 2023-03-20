@@ -35,7 +35,6 @@ const dropTables = async () => {
 //ADAM: created dropTables function above ^^
 
 const syncTables = async () => {
-  console.log('syncing tables');
   const SQL = `
 
   CREATE TABLE users(
@@ -146,14 +145,11 @@ const syncAndSeed = async () => {
      admin: false
     })
   ]);
-   console.log('--- seeded users ---');
    const [moeCart, lucyCart] = await Promise.all([
     createCart({ userId: moe.id }),
     createCart({ userId: lucy.id }),
    ]);
-  //  console.log('--- seeded carts ---');
-  //  await Promise.all(products.map((product)=> createProducts(product)));
-  //  console.log('--- seeded products ---');
+ 
 };
 
 module.exports = {
