@@ -8,8 +8,8 @@ import SingleProduct from "./SingleProduct";
 import Cart from "./Cart";
 import Admin from "./Admin"
 import { fetchAllProducts, fetchAllCategories } from "../api";
-import { FaHome } from 'react-icons/Fa';
-import { FiShoppingCart } from 'react-icons/Fi';
+import { FaHome } from 'react-icons/fa';
+import { FiShoppingCart } from 'react-icons/fi';
 
 const Search = ({ products }) => {
   const { term } = useParams();
