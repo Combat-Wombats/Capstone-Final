@@ -9,7 +9,7 @@ const Home = ()=> {
           <h6>Welcome to Our Music Store</h6>
           <h2>From Starters To Pro...</h2>
           <p>You'll find a huge range of musical equipments and accessories just for you</p>
-          <Link to="/allProducts">Products Here</Link> 
+          <Link className= 'prodLink' to="/allProducts">Products Here</Link> 
         </div>
       </div>
     </div>
