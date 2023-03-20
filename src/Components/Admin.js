@@ -3,7 +3,6 @@ import { fetchAllUsers } from '../api';
 
 const Admin = () => {
     const [users, setUsers] = useState([])
-    console.log(users, 'this is user')
     useEffect(
         () => {
             const fetchUsers = async () => {

@@ -47,7 +47,6 @@ const fetchSingleProduct = async (productId) => {
   try {
     const response = await fetch(`/api/instruments/strings/${productId}`);
     const result = await response.json();
-    //console.log(result, 'fetching single');
     if (result.error) {
       throw result.error;
     }

@@ -30,25 +30,11 @@ router.get('/strings/:id', async (req, res, next) => {
   }
 });
 
-// router.get('/brass/:id', async(req, res, next) => {
-//     try {
-//         const {id} = req.params;
-//         const brass = await getProductById(id);
-//         res.send(brass)
-//     } catch (error) {
-//         next(errpr)
-        
-//     }
-// });
-// ^^^^^ ADAM: api call for a single product view by id test --> (http://localhost:3000/api/instruments/strings/1)
-
 //api/instruments/strings/:id
 router.get('/carts/:userId', async (req, res)=>{
     // get my/user cart
     const { userId } = req. params;
     const cart = await getCartByUserId({ userId });
-    console.log('--- /carts/:userId', userId);
-    console.log('test 3', typeof cart);
     res.send(cart);
     return;
 })
@@ -62,22 +48,18 @@ router.post('/carts', async (req, res) => {
 router.post('/carts/:productId', async (req, res) => {
     const { productId } = req.params;
     
-    // const user = await getUserByToken(req.headers.authorization);
-    // const user = await getUserByToken(req.headers.authorization);
+   
     const token = req.headers['authorization']; 
     const user = await getUserByToken(token);
     if (!user) {
       res.status(401).send({ error: 'Unauthorized' });
       return;
     }
-    // res.send({laziramoDaJeUspjelo: true});
-    // return;
+   
     let order = await getCartByUserId({ userId: user.id });
     if (!(order && order.id)) {
-        // znaci da nemammo order
         await createCart({userId: user.id})
-        ///res.status(401).send({ error: 'order not success' });
-        // return;
+        
     }
     order = await getCartByUserId({ userId: user.id });
     await addProductToCart({ orderId: order.id, productId });

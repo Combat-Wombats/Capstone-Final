@@ -51,7 +51,7 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       const fetchCategories = await fetchAllCategories();
-      console.log('fetch: ', fetchCategories)
+     
       setCategories(fetchCategories);
     };
     fetchData();
@@ -100,13 +100,11 @@ const App = () => {
       .then((response) => response.json())
       .then(async(data) => {
         if (data.token) {
-          console.log("data nakon logovanja", data);
           window.localStorage.setItem("token", data.token);
           await attemptLogin();
-          console.log('I logged in with login');
           navigate('/allProducts');
         } else {
-          console.log(data);
+        
         }
       });
   };
