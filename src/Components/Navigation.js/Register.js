@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { fetchRegister } from '../../api';
 export const Register = (props) => {
-    const { setUser, setToken } = props;
+    const {attemptLogin} = props;
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const register = async (ev) => {
         ev.preventDefault();
+      try {
         const register = await fetchRegister(username, password)
-        const token = window.localStorage.getItem("token");
-        console.log(register)
-        if (register.token) {
-            setToken(register.token);
-            window.localStorage.setItem('token', token);
+        if(register.token){
+          window.localStorage.setItem('token', register.token);
+          await attemptLogin();
+          navigate('/allProducts');
         }
-        if (register.user) {
-            setUser(register.user);
-        }
+      }
+      catch(ex){
+        console.log(ex);
+      }
     };
     return (
         <div className='register'>
@@ -46,5 +48,5 @@ export const Register = (props) => {
 
     );
 };
-
+ 
 export default Register

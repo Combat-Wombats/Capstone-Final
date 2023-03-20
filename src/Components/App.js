@@ -39,9 +39,7 @@ const App = () => {
   const [product, setProduct] = useState([]);
   const [cart, setCart] = useState({});
   const [users, setUsers] = useState([])
-  console.log(auth, 'this is auth')
 
-  // console.log(user, 'ths is ')
   useEffect(() => {
     const fetchData = async () => {
       const fetchProducts = await fetchAllProducts();
@@ -53,17 +51,19 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       const fetchCategories = await fetchAllCategories();
+      console.log('fetch: ', fetchCategories)
       setCategories(fetchCategories);
     };
     fetchData();
   }, []);
 
   useEffect(() => { }, []);
+  const navigate = useNavigate();
 
   const attemptLogin = () => {
     const token = window.localStorage.getItem("token");
     if (token) {
-      fetch("/api/auth", {
+      return fetch("/api/auth", {
         method: "GET",
         headers: {
           authorization: token,
@@ -98,11 +98,13 @@ const App = () => {
       },
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then(async(data) => {
         if (data.token) {
           console.log("data nakon logovanja", data);
           window.localStorage.setItem("token", data.token);
-          attemptLogin();
+          await attemptLogin();
+          console.log('I logged in with login');
+          navigate('/allProducts');
         } else {
           console.log(data);
         }
@@ -111,7 +113,6 @@ const App = () => {
 
 
 
-  const navigate = useNavigate();
   return (
     <div>
       <div className="headerContainer">
@@ -124,32 +125,32 @@ const App = () => {
               <div className='navBar'>
                 <h3>Welcome: {auth.username}</h3>
                 <div>
-                  <Link to="/" style={{ color: "white" }}>
+                  <Link className="navLink" to="/">
                     Home
                   </Link>
-                  <Link to="/allProducts" style={{ color: "white" }}>
+                  <Link className="navLink" to="/allProducts">
                     {" "}
                     All Products
                   </Link>
-                  <Link to="/carts" style={{ color: "white" }}>
+                  <Link className="navLink" to="/carts">
                     Cart ({cart.products?.length})
                   </Link>
-                  {auth.admin ? <Link to="/admin" style={{ color: "white" }}> Admin </Link> : null}
-                  <button onClick={logout}>Logout {auth.username}</button>
+                  {auth.admin ? <Link className="navLink" to="/admin"> Admin </Link> : null}
+                  <button className="navLink" onClick={logout}>Logout {auth.username}</button>
                 </div>
               </div>
 
             ) : (
               <>
                 <div className="navBar">
-                  <Link to="/login" style={{ color: "white" }}>
+                  <Link className="navLink" to="/login">
                     Login
                   </Link>
-                  <Link to="/register" style={{ color: "white" }}>
+                  <Link className="navLink" to="/register">
                     {" "}
                     Register
                   </Link>
-                  <Link to="/allProducts" style={{ color: "white" }}>
+                  <Link className="navLink" to="/allProducts">
                     {" "}
                     All Products
                   </Link>
@@ -182,6 +183,12 @@ const App = () => {
             <Route path="/" element={<Home auth={auth} />} />
             <Route
               path="/allProducts"
+              element={
+                <AllProducts products={products} setProducts={setProducts} categories={categories} />
+              }
+            />
+            <Route
+              path="/allProducts/byCategory/:id"
               element={
                 <AllProducts products={products} setProducts={setProducts} categories={categories} />
               }
@@ -226,7 +233,7 @@ const App = () => {
             <Route
               path="/register"
               element={
-                <Register setUser={setUser} setToken={setToken} token={token} />
+                <Register attemptLogin={ attemptLogin } setUser={setUser} setToken={setToken} token={token} />
               }
             />
             <Route
@@ -237,6 +244,12 @@ const App = () => {
                   products={products}
                   setProducts={setProducts}
                 />
+              }
+            />
+            <Route
+              path="/allProducts/byCategory/:id"
+              element={
+                <AllProducts products={products} setProducts={setProducts} categories={categories} />
               }
             />
             <Route
