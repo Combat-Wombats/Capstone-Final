@@ -4,7 +4,7 @@ const AllProducts = props => {
   const categories = props.categories;
   const { id } = useParams();
   const products = props.products.filter(product => !id || id*1 === product.categoryId);
-  console.log(id);
+
     
     
 
@@ -28,15 +28,16 @@ const AllProducts = props => {
         {products.map(product => {
           return (
             <div key={product.id} className={`product ${product.categoryId}`}  style ={{
-              border: "1px solid #ccc",
+              border: "3px solid #ccc",
               borderRadius: "5px",
               padding: "10px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between"  
             }}>
+              <img className='productPhotos' src= {product.img}/>
               <h3 className="product-name">
-                {' '}Name: {product.name}{' '}
+                {' '} {product.name}{' '}
               </h3>
               {/* <p> Description: {product.description}</p>
                         <p> Features: {product.features} </p> */}
@@ -48,6 +49,7 @@ const AllProducts = props => {
                         <p> Used ? {product.used} </p>
                         <p> Shipping ? {product.shipping} </p> */}
                         {/* <p> category: {product.categoryId} </p> */}
+              
               <Link
                 to={`/allProducts/${product.id}`}
                 className="view-details-button"

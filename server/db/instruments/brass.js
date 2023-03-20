@@ -9,7 +9,8 @@ const brass =
       location: "San Diego",
       willDeliver: "Yes",
       used: "No",
-      shipping: "Yes"
+      shipping: "Yes",
+      img:"https://media.sweetwater.com/m/gx/9631f250dfc039a672d602746b96e97e9ab96d5b.jpg?quality=75&auto=webp&width=2000&height=2000&fit=bounds&canvas=2000,2000&bg-color=f2f1f0"
 
     },
     {
@@ -21,7 +22,8 @@ const brass =
       location: "New York",
       willDeliver: "Yes",
       used: "No",
-      shipping: "Yes"
+      shipping: "Yes",
+      img: "https://media.guitarcenter.com/is/image/MMGS7/H74693000001000-00-720x720.jpg"
 
     },
     {
@@ -32,7 +34,8 @@ const brass =
       location: "Washington, DC",
       willDeliver: "Yes",
       used: "No",
-      shipping: "Yes"
+      shipping: "Yes",
+      img: "https://media.musicarts.com/is/image/MMGS7/J47537000002000-00-720x720.jpg"
 
     },
     {
@@ -43,7 +46,8 @@ const brass =
       location: "San Antonio",
       willDeliver: "Yes",
       used: "No",
-      shipping: "Yes"
+      shipping: "Yes",
+      img: "https://media.guitarcenter.com/is/image/MMGS7/L52349000002001-00-720x720.jpg"
     },
     {
       name: "Miraphone 1291 Series 4/4 BBb Tuba 1291-5V 5 Valve Lacquer",
@@ -53,7 +57,8 @@ const brass =
       location: "Arlington, VA",
       willDeliver: "Yes",
       used: "No",
-      shipping: "Yes"
+      shipping: "Yes",
+      img: "https://media.musiciansfriend.com/is/image/MMGS7/1291-Series-4-4-BBb-Tuba-1291-4V-4-Valve-Lacquer/463936000943000-00-500x500.jpg"
     }
   ]
 module.exports = { brass}

@@ -39,9 +39,7 @@ const App = () => {
   const [product, setProduct] = useState([]);
   const [cart, setCart] = useState({});
   const [users, setUsers] = useState([])
-  console.log(auth, 'this is auth')
 
-  // console.log(user, 'ths is ')
   useEffect(() => {
     const fetchData = async () => {
       const fetchProducts = await fetchAllProducts();
@@ -53,6 +51,7 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       const fetchCategories = await fetchAllCategories();
+      console.log('fetch: ', fetchCategories)
       setCategories(fetchCategories);
     };
     fetchData();

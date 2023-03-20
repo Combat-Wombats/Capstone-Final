@@ -12,12 +12,13 @@ const createProducts = async ({
   willDeliver,
   used,
   shipping,
-  categoryId
+  categoryId,
+  img 
 }) => {
   try {
     const SQL = `
-      INSERT INTO products(name, description, features, price, location, "willDeliver", used, shipping, "categoryId")
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+      INSERT INTO products(name, description, features, price, location, "willDeliver", used, shipping, "categoryId", img)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
       RETURNING *
     `;
     const response = await client.query(SQL, [
@@ -29,7 +30,8 @@ const createProducts = async ({
       willDeliver,
       used,
       shipping,
-      categoryId
+      categoryId,
+      img
     ]);
     return response.rows[0];
   } catch (error) {

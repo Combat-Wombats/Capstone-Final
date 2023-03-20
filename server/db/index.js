@@ -59,7 +59,8 @@ const syncTables = async () => {
     "willDeliver" BOOLEAN,
     used BOOLEAN,
     shipping BOOLEAN,
-    "categoryId" integer references categories(id)
+    "categoryId" integer references categories(id),
+    img VARCHAR(255)
     );
   CREATE TABLE orders (
     id SERIAL PRIMARY KEY,

@@ -7,7 +7,7 @@ export const Register = (props) => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const register = async(ev) => {
+    const register = async (ev) => {
         ev.preventDefault();
       try {
         const register = await fetchRegister(username, password)
@@ -22,27 +22,29 @@ export const Register = (props) => {
       }
     };
     return (
-        <div className='register-section'>
-             <h1>Register</h1>
-              <form onSubmit={ register }>
-                <input
-                placeholder='username'
-                value = { username }
-                onChange = { ev => setUsername(ev.target.value) }
-                />
-                <input
-                placeholder='password'
-                type = 'password'
-                value={ password }
-                onChange = { ev => setPassword(ev.target.value) }
-                />
-                <button>Register</button>
-            </form>   
-            <Link to='/Login'>
-                Already Have An Account? Click Here.
-            </Link>
+        <div className='register'>
+            <div className='registerComp'>
+                <h1>Register</h1>
+                <form onSubmit={register}>
+                    <input
+                        placeholder='username'
+                        value={username}
+                        onChange={ev => setUsername(ev.target.value)}
+                    />
+                    <input
+                        placeholder='password'
+                        type='password'
+                        value={password}
+                        onChange={ev => setPassword(ev.target.value)}
+                    />
+                    <button className ='registerBtn'>REGISTER</button>
+                </form>
+                <Link className="registerLink" to='/Login' >
+                    Already Have An Account? Click Here.
+                </Link>
+            </div>
         </div>
-       
+
 
     );
 };
