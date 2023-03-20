@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { fetchMyCart,fetchAddToCart} from "../api"
 
 
-const Cart = ({ cart, setCart }) => {
+const Cart = ({ cart, setCart, auth }) => {
 
   const refresh = ()=>{
-    fetchMyCart()
+    fetchMyCart(auth.id)
     .then((data)=>{
       console.log("fetchovan cart", data);
       if(data && Array.isArray(data.products)){
@@ -23,7 +23,7 @@ const Cart = ({ cart, setCart }) => {
     const response = await fetchAddToCart(productId);
     console.log("add to cart response is here", response);
     // refreshing cart number
-    fetchMyCart()
+    fetchMyCart(auth.id)
     .then((data)=>{
       console.log("fetchovan cart", data);
       if(data && Array.isArray(data.products)){
@@ -75,19 +75,20 @@ const Cart = ({ cart, setCart }) => {
           return (
             <li>
               {product.name}({product.quantity})
-              <div>
-              <button onClick={async ()=>{
+              <div className='cart-btn'>
+              <button className='add-btn' onClick={async ()=>{
                 addToCartFe(product.id)
               }}> + </button>
-              </div>
-              
+          
               <button
+                className='delete-btn'
                 onClick={async () => {
                   const updatedCart = await deleteProductFromCart(product.id);
                 }}
               >
                 DELETE PRODUCT
               </button>
+              </div>
             </li>
           );
         })}
