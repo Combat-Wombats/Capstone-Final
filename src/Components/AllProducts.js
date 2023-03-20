@@ -14,16 +14,14 @@ const AllProducts = props => {
       <h2 className="title"> Our Products ({ products.length })</h2>
 
       <div className = "categorical">
-                {
-                  categories.map((category)=>{
+                {categories.map((category)=>{
                     return <div className="individualCategory">
-
                     <h3 className={ id*1 === category.id ? 'selected': '' }>
                       <Link to={id*1 === category.id ? '/allProducts': `/allProducts/byCategory/${category.id}`}>{category.category}</Link></h3>
                     </div>
                   })
                 }
-                    </div>
+      </div>
       <div className="products-container">
         {products.map(product => {
           return (
@@ -39,8 +37,6 @@ const AllProducts = props => {
               <h3 className="product-name">
                 {' '} {product.name}{' '}
               </h3>
-              {/* <p> Description: {product.description}</p>
-                        <p> Features: {product.features} </p> */}
               <p className="product-price">
                 {product.price}
               </p>

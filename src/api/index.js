@@ -85,11 +85,6 @@ const fetchAddToCart = async (productId, data) => {
 };
 
 const fetchMyCart = async (userId) => {
-
-  // const token = window.localStorage.getItem("token");
-  // const decodedToken = jwt.decode(token);
-  // const decodedToken = jwt_decode(token);
-  // const userId = decodedToken.id; // njega deokdiramo iz tokena u tokenu je spakovan pod imenom id
   try {
     const response = await fetch(`/api/instruments/carts/${userId}`);
     const result = await response.json();
@@ -111,7 +106,6 @@ const fetchAllUsers = async () => {
 
 module.exports = {
   fetchRegister,
-  //fetchLogin,
   fetchUser,
   fetchAllProducts,
   fetchSingleProduct,

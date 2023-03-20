@@ -1,24 +1,13 @@
 const client = require('./client');
-
-
 const {createCategory, getCategories} = require('./categories');
-
-
 const { getUserByToken, createUser, authenticate } = require('./User');
-
-// const { createTables, dropTables } = require('./seedData');
-// ADAM: the line about requiring emoty files and functions ^^^^^
-
 const { createProducts } = require('./products');
-
 const { createCart } = require('./cart')
-
 const { strings } = require('./instruments/strings');
 const { accessories } = require('./instruments/accessories');
 const { brass } = require('./instruments/brass');
 const { drums } = require('./instruments/drums');
 const { woodwind } = require('./instruments/woodwind');
-
 
 const dropTables = async () => {
 
@@ -149,7 +138,7 @@ const syncAndSeed = async () => {
     createCart({ userId: moe.id }),
     createCart({ userId: lucy.id }),
    ]);
- 
+
 };
 
 module.exports = {
@@ -158,7 +147,6 @@ module.exports = {
   createUser,
   authenticate,
   getUserByToken,
- //createTables,
   dropTables,
   getCategories,
   client

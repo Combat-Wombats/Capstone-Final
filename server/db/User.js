@@ -2,7 +2,6 @@ const client = require('./client');
 const jwt = require('jsonwebtoken');
 const JWT = process.env.JWT;
 
-
 const createUser = async({ username, password, admin }) => {
   const SQL = `
     INSERT INTO users(username, password, admin)

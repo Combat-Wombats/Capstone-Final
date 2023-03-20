@@ -47,8 +47,6 @@ router.post('/carts', async (req, res) => {
 // post
 router.post('/carts/:productId', async (req, res) => {
     const { productId } = req.params;
-    
-   
     const token = req.headers['authorization']; 
     const user = await getUserByToken(token);
     if (!user) {

@@ -52,8 +52,6 @@ const addProductToCart = async ({ orderId, productId }) => {
       );
       return;
     }
-  
-
   const SQL = `
       INSERT INTO order_products("productId", "orderId", "quantity")
       VALUES($1, $2, 1)
