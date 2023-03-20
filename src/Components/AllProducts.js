@@ -40,11 +40,6 @@ const AllProducts = props => {
               <p className="product-price">
                 {product.price}
               </p>
-              {/* <p> Location: {product.location} </p>
-                        <p> Will Deliver: {product.willDeliver} </p>
-                        <p> Used ? {product.used} </p>
-                        <p> Shipping ? {product.shipping} </p> */}
-                        {/* <p> category: {product.categoryId} </p> */}
               
               <Link
                 to={`/allProducts/${product.id}`}
