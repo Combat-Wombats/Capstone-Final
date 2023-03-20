@@ -7,7 +7,6 @@ const Cart = ({ cart, setCart, auth }) => {
   const refresh = ()=>{
     fetchMyCart(auth.id)
     .then((data)=>{
-      console.log("fetchovan cart", data);
       if(data && Array.isArray(data.products)){
         setCart(data)
       }
@@ -21,11 +20,9 @@ const Cart = ({ cart, setCart, auth }) => {
   const addToCartFe = async(productId)=>{
     const data ={orderId: 555, productId}; // this data is ignored for now
     const response = await fetchAddToCart(productId);
-    console.log("add to cart response is here", response);
     // refreshing cart number
     fetchMyCart(auth.id)
     .then((data)=>{
-      console.log("fetchovan cart", data);
       if(data && Array.isArray(data.products)){
         setCart(data);
         // after cart update do refresh
@@ -45,8 +42,6 @@ const Cart = ({ cart, setCart, auth }) => {
       },
       
     });
-    console.log(response, "our response")
-    
     const updatedCart = await response.json();
     setCart(updatedCart);
     return updatedCart;
@@ -65,8 +60,6 @@ const Cart = ({ cart, setCart, auth }) => {
     const newCart = await response.json();
     setCart(newCart);
   };
-
-  console.log('Cart: ', cart);
   return (
     <div>
       <h2>Cart:</h2>

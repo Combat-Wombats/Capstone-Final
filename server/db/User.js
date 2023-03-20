@@ -13,7 +13,6 @@ const createUser = async({ username, password, admin }) => {
 
 const getUserByToken = async(token) => {
   const payload = await jwt.verify(token, JWT);
-  console.log('payload', payload, token)
   const SQL = `
     SELECT *
     FROM users

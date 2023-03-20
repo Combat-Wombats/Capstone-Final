@@ -24,7 +24,7 @@ const getCartByUserId = async ({ userId }) => {
         `;
     const response = await client.query(SQL, [userId]);
     const cart = response.rows[0];
-    console.log("cart for userId", userId, cart);
+   
     //get products
     const productsSQL = `
         SELECT * 
@@ -32,21 +32,14 @@ const getCartByUserId = async ({ userId }) => {
         LEFT JOIN products ON order_products."productId" = products.id
         WHERE order_products."orderId" =$1
         `;
-    console.log("test1");
-    console.log(cart.id);
-    console.log(typeof cart.id);
-    console.log("test2");
+    
     const productsResponse = await client.query(productsSQL, [cart.id]);
-    console.log(productsResponse.rows.length);
     cart.products = productsResponse.rows;
     return cart;
   } catch (error) {}
 };
 // add product to cart
-const addProductToCart = async ({ orderId, productId }) => {
-  console.log("add product to cart", orderId, productId);
-
-  
+const addProductToCart = async ({ orderId, productId }) => {  
     const checkSQL = `
       SELECT * FROM order_products
       WHERE "orderId" = $1 AND "productId" = $2
