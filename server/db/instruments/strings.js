@@ -12,7 +12,9 @@ const strings =
             location: "New York",
             willDeliver: "yes",
             used: "No",
-            shipping: "yes"
+            shipping: "yes",
+            img: `https://media.musiciansfriend.com/is/image/MMGS7/L96040000001000-00-2000x2000.jpg`
+
         },
         {
             name: "  PRS Singlecut McCarty 594 Electric Guitar Black Gold Sunburst ",
@@ -26,7 +28,8 @@ const strings =
             location: "Chicago",
             willDeliver : "yes",
             used: "no",
-            shipping: "yes"
+            shipping: "yes",
+            img: `https://media.musiciansfriend.com/is/image/MMGS7/L98873000001000-00-2000x2000.jpg`
         },
         {
             name: "  Ibanez ALT30FM Altstar Flamed-Top Dreadnought Acoustic-Electric Guitar Emerald Doom Burst",
@@ -36,7 +39,8 @@ const strings =
             location: "Vegas",
             willDeliver: "yes",
             used: "no",
-            shipping: "yes"
+            shipping: "yes",
+            img: " https://media.musiciansfriend.com/is/image/MMGS7/ALT30FM-Altstar-Flamed-Top-Dreadnought-Acoustic-Electric-Guitar-Doom-Blue-Burst/L82189000001000-00-500x500.jpg"
         },
         {
             name: "Epiphone PR-150 Acoustic Guitar Natural",
@@ -53,7 +57,8 @@ const strings =
             location: "Seattle",
             willDeliver: "yes",
             used: "no",
-            shipping: "yes"          
+            shipping: "yes" ,
+            img: " https://media.guitarcenter.com/is/image/MMGS7/512457000010000-00-720x720.jpg"         
         },
         {
             name: " Epiphone Dove Studio Limited-Edition Acoustic-Electric Guitar Alpine White",
@@ -72,7 +77,8 @@ const strings =
             location: "Austin",
             willDeliver: "yes",
             used: "no" ,
-            shipping: "yes"
+            shipping: "yes",
+            img: "https://media.guitarcenter.com/is/image/MMGS7/L25757000001000-02-2000x2000.jpg"
         },
         {
             name: "  Gibson Hummingbird Original Acoustic-Electric Guitar Heritage Cherry Sunburst",
@@ -82,7 +88,8 @@ const strings =
             location: "Portland",
             willDeliver: "yes",
             used: "no",
-            shipping: "yes"
+            shipping: "yes",
+            img: "https://media.guitarcenter.com/is/image/MMGS7/000000118642614-00-720x720.jpg"
         },
         {
             name: "Rogue RD80PK Dreadnought Acoustic Guitar Pack",
@@ -99,7 +106,8 @@ const strings =
             location: "Washington D.C",
             willDeliver: "yes",
             used: "no",
-            shipping: "yes"
+            shipping: "yes",
+            img: "https://media.musiciansfriend.com/is/image/MMGS7/H83023000000000-01-500x500.jpg"
         },
         {
             name: "  Epiphone J-200 EC Studio Acoustic-Electric Guitar Vintage Sunburst",
@@ -109,7 +117,8 @@ const strings =
             location: "Miami",
             willDeliver: "yes",
             used: "no",
-            shipping: "yes"
+            shipping: "yes",
+            img: "https://media.guitarcenter.com/is/image/MMGS7/518652000015000-00-720x720.jpg"
 
         },
         {
@@ -121,7 +130,8 @@ const strings =
             location: "Nashville",
             willDeliver: "yes",
             used: "no",
-            shipping: "yes"
+            shipping: "yes",
+            img: "https://media.guitarcenter.com/is/image/MMGS7/L59020000001000-00-720x720.jpg"
         },
         {
             name: "Takamine G Series GD30CE Dreadnought Cutaway Acoustic-Electric Guitar Wine Red",
@@ -145,7 +155,8 @@ const strings =
             location: "Colorado Springs",
             willDeliver: "yes",
             used: "no",
-            shipping: "yes"
+            shipping: "yes",
+            img: "https://media.guitarcenter.com/is/image/MMGS7/H99517000003000-00-720x720.jpg"
         }
 
     ]

@@ -8,8 +8,8 @@ const drums=
       location: "N/A",
       willDeliver: "yes",      
       used: "No",
-      shipping: "Yes"
-
+      shipping: "Yes",
+      img: "https://media.musiciansfriend.com/is/image/MMGS7/Club-JAM-4-Piece-Shell-Pack-Galaxy-Silver/K83505000003000-00-500x500.jpg"
     },
     {
       name: 'PDP by DW Concept Maple 4-Piece Shell Pack With Chrome Hardware Twisted Ivory',
@@ -19,7 +19,8 @@ const drums=
       location: "San Francisco",
       willDeliver: "Yes",
       used: "No",
-      shipping: "Yes"
+      shipping: "Yes",
+      img: "https://media.musiciansfriend.com/is/image/MMGS7/L81798000001000-00-2000x2000.jpg"
 
     },
     {
@@ -30,7 +31,8 @@ const drums=
       location: "Denver",
       willDeliver: "Yes",
       used: "No",
-      shipping: "Yes"
+      shipping: "Yes",
+      img: "https://media.musiciansfriend.com/is/image/MMGS7/Velocity-5-Piece-Shell-Pack-Spring-Green/L85384000005000-00-500x500.jpg"
 
     },
   {
@@ -42,7 +44,8 @@ const drums=
     location: "Huston, TX",
     willDeliver: "Yes",
     used: "No",
-    shipping: "Yes"
+    shipping: "Yes",
+    img: "https://media.guitarcenter.com/is/image/MMGS7/L83812000000000-00-720x720.jpg"
 
   },
   {
@@ -53,7 +56,8 @@ const drums=
     location: "New York",
     willDeliver: "Yes",
     used: "No",
-    shipping: "Yes"
+    shipping: "Yes",
+    img: "https://media.musiciansfriend.com/is/image/MMGS7/L78553000000000-00-2000x2000.jpg"
 
     }
 ]
